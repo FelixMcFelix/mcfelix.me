@@ -1,0 +1,40 @@
+<aside>
+	<section>
+		<div class="social share">
+			<a
+				href="{{ .Permalink }}" 
+				onclick="window.open(this.href, '_blank'); return false;"
+				alt="Permalink"
+				title="Permalink"
+			><i class="fa fa-link"></i></a>
+
+			<a
+				href="http://www.facebook.com/sharer.php?src=bm&u={{ .Permalink }}&t={{ .Title }}"
+				onclick="return newSmallWindow(this.href);"
+				alt="Share on Facebook"
+				title="Share on Facebook"
+			><i class="fa fa-facebook"></i></a>
+
+			<a
+				href="http://twitter.com/intent/tweet?url={{ .Permalink }}&text={{ .Title }}&tw_p=tweetbutton"
+				onclick="return newSmallWindow(this.href);"
+				alt="Share on Twitter"
+				title="Share on Twitter"
+			><i class="fa fa-twitter"></i></a>
+
+			<a
+				href="https://plus.google.com/share?url={{ .Permalink }}"
+				onclick="return newSmallWindow(this.href);"
+				alt="Share on Google+"
+				title="Share on Google+"
+			><i class="fa fa-google-plus"></i></a>
+
+			<a
+				href="http://getpocket.com/edit?url={{ .Permalink }}&title={{ .Title }}"
+				onclick="return newSmallWindow(this.href);"
+				alt="Save to Pocket"
+				title="Save to Pocket"
+			><i class="fa fa-get-pocket"></i></a>
+		</div>
+	</section>
+</aside>

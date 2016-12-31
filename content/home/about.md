@@ -4,6 +4,7 @@ title = "home"
 
 component = "about"
 weight = 0
+avatardesc = "Profile picture of Kyle Simpson at Loch an Eilein, Aviemore."
 
 +++
 

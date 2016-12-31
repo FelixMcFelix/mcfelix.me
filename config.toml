@@ -1,4 +1,4 @@
-baseurl = "https://mcfelix.me"
+baseurl = "https://mcfelix.me/"
 languageCode = "en-GB"
 title = "Kyle Simpson"
 theme = "felix"
@@ -29,14 +29,14 @@ themep = "hugo-sustain"
   name = "blog"
   weight = 100
   identifier = "blog"
-  url = "/blog/"
+  url = "blog/"
 [[menu.main]]
   name = "projects"
   identifier = "projects"
   weight = 200
-  url = "/projects/"
+  url = "projects/"
 [[menu.main]]
-  name = "resume"
-  identifier = "resum&eacute;"
+  name = "resumé"
+  identifier = "resume"
   weight = 300
-  url = "/resume/"
+  url = "Vitae-KSimpson.pdf"

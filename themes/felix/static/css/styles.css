@@ -13,8 +13,12 @@
 .navbar-split {
 	height: 2px;
 	width: 80%;
-	max-width: 4em;
-	background: linear-gradient(to right, rgba(60,56,52,0), rgb(60, 56, 52), rgba(60,56,52,0));
+	max-width: 6em;
+	background: linear-gradient(
+		to right,
+		rgba(60,56,52,0),
+		rgb(60, 56, 52),
+		rgba(60,56,52,0));
 	margin: 0.5em auto;
 	clear: left;
 }
@@ -29,7 +33,8 @@
 }
 
 .navbar-body {
-	list-style-type: none;
+	max-width: 20em;
+	margin: 0 auto;
 }
 
 .navbar-body div {
@@ -115,6 +120,11 @@ article {
 	margin-left: 0.5em;
 }
 
+.home-about {
+	text-align: center;
+	font-size: 1.3em;
+}
+
 @media (min-width: 48em) {
 	.navbar {
 		position: fixed;
@@ -124,7 +134,6 @@ article {
 	}
 
 	.navbar-split {
-		max-width: 4em;
 		margin: 1em auto;
 	}
 
@@ -147,5 +156,9 @@ article {
 
 	.home {
 		margin-top: 0em;
+	}
+
+	.home-about {
+		font-size: 1.5em;
 	}
 }

@@ -9,9 +9,7 @@
 		{{ $params := dict "root" $ "page" $page }}
 		{{ $widget := printf "components/%s.html" ( or $page.Params.component "custom" ) }}
 		<section id="{{ $page.File.BaseFileName }}" class="home-section">
-			<div class="container">
-				{{ partial $widget $params }}
-			</div>
+			{{ partial $widget $params }}
 		</section>
 	{{ end }}
 </section>

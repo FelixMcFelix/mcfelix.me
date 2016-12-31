@@ -1,0 +1,151 @@
+.navbar {
+	background-color: #1f1c18;/*#1d150c;*/
+	color: #ffffff;
+	font-size: 1.33em;
+}
+
+.navbar a {
+	color: #ffffff;
+	text-decoration: none;
+	font-weight: bold/*normal;*/
+}
+
+.navbar-split {
+	height: 2px;
+	width: 80%;
+	max-width: 4em;
+	background: linear-gradient(to right, rgba(60,56,52,0), rgb(60, 56, 52), rgba(60,56,52,0));
+	margin: 0.5em auto;
+	clear: left;
+}
+
+.navbar-header {
+	text-align: center;
+	padding-top: 1.5em;
+}
+
+.navbar-header > a::after {
+	content: " $";
+}
+
+.navbar-body {
+	list-style-type: none;
+}
+
+.navbar-body div {
+	text-align: center;
+}
+
+.navbar-body a::before {
+	content: ">";
+}
+
+nav a::before, nav a::after, a {
+	color: #d65f10;
+}
+
+body {
+	background-color: rgb(239,239,239);
+}
+
+.content > div {
+	padding: 0.5em;
+	max-width: 48em;
+	font-family: "Alegreya", "Lora", serif;
+	color: #2f261b;
+}
+
+html, button, input, select, textarea, .pure-g [class *= "pure-u"] {
+	font-family: "Alegreya", "Lora", Georgia, Times, "Times New Roman", serif;
+}
+
+section.social {
+	clear: left;
+	padding: 0em 0 1em;
+}
+
+.social {
+	text-align: center;
+}
+
+.home {
+	margin-top: 3em;
+}
+
+.avatar {
+	max-width: 16em;
+	margin: 0 auto;
+}
+
+.avatar > img {
+	border-radius: 100%;
+	box-shadow: 1px #000000;
+}
+
+footer {
+	text-align: center;
+	color: #8c8c8c;
+}
+
+a {
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.content a:hover {
+	text-decoration: underline;
+}
+
+.article-image {
+	width: 100%;
+	height: 7.6rem;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
+article {
+	background-color: white;
+	margin-bottom: 1em;
+	padding: 0.75em;
+	box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.4);
+}
+
+.list-title {
+	margin-left: 0.5em;
+}
+
+@media (min-width: 48em) {
+	.navbar {
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		max-width: 16em;
+	}
+
+	.navbar-split {
+		max-width: 4em;
+		margin: 1em auto;
+	}
+
+	.content {
+		margin-left: 25%;
+	}
+
+	.content > div {
+		padding: 2em 3em 0;
+	}
+
+	nav.navbar ul {
+		padding: 0;
+		margin: 0 23%;
+	}
+
+	nav.navbar ul > li {
+		display: block;
+	}
+
+	.home {
+		margin-top: 0em;
+	}
+}

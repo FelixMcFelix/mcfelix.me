@@ -1,0 +1,99 @@
+{{ partial "header" . }}
+
+<script type="application/ld+json">
+	{
+		"@context": "http://schema.org",
+		"@type": "BlogPosting",
+		"mainEntityOfPage":{
+			"@type":"WebPage",
+			"@id":"{{ .Site.BaseURL }}"
+		},
+		"headline": "{{ .Title }} | {{ .Site.Params.titlefull }} {{ .Site.Params.titlesub}}",
+		"image": {
+			"@type": "ImageObject",
+			"url": "",
+			"height": 700,
+			"width": 700
+		},
+		"datePublished": "{{ .Date.Format "2006-01-02T15:04:05JST" }}",
+		"dateModified": "{{ .Date.Format "2006-01-02T15:04:05JST" }}",
+		"author": {
+			"@type": "Person",
+			"name": "{{ .Site.Params.author }}",
+			"image": "{{ .Site.BaseURL }}images/{{ .Site.Params.avatar }}"
+		},
+		"publisher": {
+			"@type": "Organization",
+			"name": "{{ .Site.Copyright }}",
+			"logo": {
+				"@type": "ImageObject",
+				"url": "{{ .Site.BaseURL }}images/logo.png",
+				"height": 60,
+				"width": 60
+			}
+		},
+		"description": "{{ .Description }}"
+	}
+</script>
+
+<script type="text/javascript">
+	function newSmallWindow(url) {
+		window.open(url, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes');
+		return false;
+	}
+</script>
+
+<link rel="bookmark" href="{{ .Permalink }}" />
+
+{{ partial "close-header" . }}
+
+{{ partial "navbar" . }}
+
+<article class="single">
+	<div class="image" style="background-image: url({{ $.Site.BaseURL }}images/{{ with .Params.image }}{{ . }}{{ else }}default.jpg{{ end }});"></div>
+	<div class="body">
+		<h1>{{ .Title }}</h1>
+		{{ .Content }}
+	</div>
+
+	<aside>
+		<section>
+			<div class="social share">
+				<a
+					href="{{ .Permalink }}" 
+					onclick="window.open(this.href, '_blank'); return false;"
+					title="Permalink"
+				><i class="fa fa-link"></i></a>
+
+				<a
+					href="http://www.facebook.com/sharer.php?src=bm&u={{ .Permalink }}&t={{ .Title }}"
+					onclick="return newSmallWindow(this.href);"
+					title="Share on Facebook"
+				><i class="fa fa-facebook"></i></a>
+
+				<a
+					href="http://twitter.com/intent/tweet?url={{ .Permalink }}&text={{ .Title }}&tw_p=tweetbutton"
+					onclick="return newSmallWindow(this.href);"
+					title="Share on Twitter"
+				><i class="fa fa-twitter"></i></a>
+
+				<a
+					href="https://plus.google.com/share?url={{ .Permalink }}"
+					onclick="return newSmallWindow(this.href);"
+					title="Share on Google+"
+				><i class="fa fa-google-plus"></i></a>
+
+				<a
+					href="http://getpocket.com/edit?url={{ .Permalink }}&title={{ .Title }}"
+					onclick="return newSmallWindow(this.href);"
+					title="Save to Pocket"
+				><i class="fa fa-get-pocket"></i></a>
+			</div>
+		</section>
+	</aside>
+
+</article>
+
+{{ partial "social" . }}
+
+{{ partial "footer" . }}

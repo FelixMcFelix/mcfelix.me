@@ -1,0 +1,8 @@
+{{ $ := .root }}
+{{ $page := .page }}
+
+<figure class="avatar">
+	<img class="pure-img" src="/images/{{ $.Site.Params.avatar }}" alt="Profile picture of {{ $.Site.Params.author }}.">
+</figure>
+<!-- Hi! This is my bio. Here is where I talk about myself! I'm <b>{{ .Site.Params.author }}</b>, pleased to make your acquaintance. -->
+{{ $page.Content }}

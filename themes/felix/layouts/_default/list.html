@@ -1,0 +1,26 @@
+{{ partial "header" . }}
+{{ partial "close-header" . }}
+
+{{ partial "navbar" . }}
+<h1 class="list-title">{{ .Title }}</h1>
+
+{{ range (.Paginate .Data.Pages).Pages }}
+	<article>
+		<a href="{{ .Permalink }}">
+			<div class="article-image" style="background-image: url({{ $.Site.BaseURL }}images/{{ with .Params.image }}{{ . }}{{ else }}default.jpg{{ end }});"></div>
+			<section>
+				<h2 class="title">{{ .Title }}</h2>
+				<div class="date">
+					<time datetime="{{ .Date.Format "2006-01-02T15:04:05JST" }}">
+						{{ with .Site.Params.DateForm }}{{ $.Date.Format . }}{{ else }}{{ $.Date.Format "Mon, Jan 2, 2006" }}{{ end }}
+					</time>
+				</div>
+				<div class="summary">{{ .Summary }}</div>
+			</section>
+		</a>
+	</article>
+{{ end }}
+
+{{ partial "pagination.html" . }}
+
+{{ partial "footer.html" . }}

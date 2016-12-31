@@ -1,0 +1,25 @@
+<section class="social">
+	{{ with .Site.Social.bandcamp }}
+	<a href="https://{{ . }}.bandcamp.com/" title="Bandcamp"><i class="fa fa-bandcamp"></i></a>
+	{{ end }}
+
+	{{ with .Site.Social.github }}
+	<a href="http://github.com/{{ . }}" title="GitHub"><i class="fa fa-github"></i></a>
+	{{ end }}
+
+	{{ with .Site.Social.email }}
+	<a href="mailto:{{ . }}" title="Email"><i class="fa fa-envelope"></i></a>
+	{{ end }}
+
+	{{ with .Site.Social.twitter }}
+	<a href="http://twitter.com/{{ . }}" title="Twitter"><i class="fa fa-twitter"></i></a>
+	{{ end }}
+
+	{{ with .Site.Social.linkedin }}
+	<a href="http://linkedin.com/in/{{ . }}" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
+	{{ end }}
+
+	{{ with .Site.Social.stackoverflow }}
+	<a href="http://stackoverflow.com/{{ . }}" title="StackOverflow"><i class="fa fa-stack-overflow"></i></a>
+	{{ end }}
+</section>

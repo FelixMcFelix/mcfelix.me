@@ -6,3 +6,12 @@ title = "test"
 +++
 
 Okay, this is a test post!
+
+
+```js
+class Class {
+	constructor() {
+		//dsdadads
+	}
+}
+```

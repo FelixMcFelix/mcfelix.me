@@ -1,0 +1,19 @@
+{{ partial "header" . }}
+{{ partial "close-header" . }}
+
+{{ partial "navbar" . }}
+
+<!-- Widgets -->
+<section class="home">
+	{{ range $index, $page := where .Data.Pages "Type" "home" }}
+		{{ $params := dict "root" $ "page" $page }}
+		{{ $widget := printf "components/%s.html" ( or $page.Params.component "custom" ) }}
+		<section id="{{ $page.File.BaseFileName }}" class="home-section">
+			<div class="container">
+				{{ partial $widget $params }}
+			</div>
+		</section>
+	{{ end }}
+</section>
+
+{{ partial "footer" . }}

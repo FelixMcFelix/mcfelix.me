@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		{{ .Hugo.Generator }}
+
+		<!-- WebFonts -->
+		<!-- <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet"> -->
+		<link href="https://fonts.googleapis.com/css?family=Alegreya:400,700" rel="stylesheet">
+
+		<!-- FontAwesome -->
+		<script src="https://use.fontawesome.com/54984e38b5.js"></script>
+
+		<!-- Pure.css -->
+		<link rel="stylesheet" href="https://unpkg.com/purecss@0.6.1/build/base-min.css" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://unpkg.com/purecss@0.6.1/build/grids-min.css" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://unpkg.com/purecss@0.6.1/build/grids-responsive-min.css" crossorigin="anonymous">
+
+		<!-- Local Styles -->
+		<link rel="stylesheet" href="{{ .Site.BaseURL }}/css/styles.css">
+		<link rel="stylesheet" href="{{ .Site.BaseURL }}/css/custom.css">
+		<link rel="alternate" type="application/rss+xml" title="RSS" href="{{ .Site.BaseURL }}/index.xml">
+
+		{{ if eq .URL "/" }}
+		<title>{{ .Title }}</title>
+		<meta property='og:title' content="{{ .Title }}">
+		<meta property="og:type" content="website">
+		{{ else }}
+		<title>{{ .Title }} - {{ .Site.Title }}</title>
+		<meta property='og:title' content="{{ .Title }} - {{ .Site.Title }}">
+		<meta property="og:type" content="article">
+		{{ end }}
+
+		<meta property="og:url" content="{{ .Permalink }}">
+		{{ with .Description }}<meta name="description" content="{{ . }}">{{ end }}
+		{{ with .Params.image }}<meta property="og:image" content="{{ $.Site.BaseURL }}/images/{{ . }}">{{ end }}
+		<meta name="author" content="{{ .Site.Params.author }}" />

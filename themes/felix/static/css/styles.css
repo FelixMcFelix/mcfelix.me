@@ -188,8 +188,8 @@ article.project:nth-child(odd) .article-image {
 }
 
 article.project section {
-	width: 80%;
-	padding: 1.2em;
+	width: 70%;
+	padding: 0.8em;
 }
 
 article.project:nth-child(even) section {
@@ -341,6 +341,11 @@ a.rss {
 
 	.article-image-big {
 		height: 13.6rem;
+	}
+
+	article.project section {
+		width: 80%;
+		padding: 1.2em;
 	}
 }
 

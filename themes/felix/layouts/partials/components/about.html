@@ -2,14 +2,16 @@
 {{ $page := .page }}
 
 <figure class="avatar">
-	<img class="pure-img" src="/images/{{ $.Site.Params.avatar }}"
-	{{ if $page.Params.avatardesc }}
-	alt="{{ $page.Params.avatardesc }}"
-	title="{{ $page.Params.avatardesc }}"
-	{{ else }}
-	alt="Profile picture of {{ $.Site.Params.author }}."
-	title="Profile picture of {{ $.Site.Params.author }}."
-	{{end}}
+	<img
+		class="pure-img"
+		src="/images/{{ $.Site.Params.avatar }}"
+		{{ if $page.Params.avatardesc }}
+		alt="{{ $page.Params.avatardesc }}"
+		title="{{ $page.Params.avatardesc }}"
+		{{ else }}
+		alt="Profile picture of {{ $.Site.Params.author }}."
+		title="Profile picture of {{ $.Site.Params.author }}."
+		{{end}}
 	/>
 </figure>
 

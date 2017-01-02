@@ -1,8 +1,9 @@
 +++ 
 title = ""
 description = ""
-image = ""
 tags = []
 categories = []
-draft = true
+github = ""
+links = []
+image = ""
 +++

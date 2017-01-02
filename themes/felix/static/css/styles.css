@@ -7,7 +7,34 @@
 .navbar a {
 	color: #ffffff;
 	text-decoration: none;
-	font-weight: bold/*normal;*/
+	font-weight: /*bold*/normal;
+}
+
+@keyframes navhover {
+	0%   {
+		color: #ffffff;
+	}
+	100% {
+		color: #d65f10;
+	}
+}
+
+@keyframes reghover {
+	0%   {
+		color: #d65f10;
+	}
+	100% {
+		color: #ff771d;
+	}
+}
+
+.navbar a:hover {
+	color: #d65f10;
+	text-decoration: none;
+
+	animation-name: navhover;
+	animation-duration: 0.2s;
+	animation-timing-function: ease;
 }
 
 .navbar-split {
@@ -50,7 +77,7 @@ nav a::before, nav a::after, a {
 }
 
 body {
-	background-color: rgb(239,239,239);
+	background-color: rgb(238, 232, 224);/*rgb(239,239,239);*/
 }
 
 .content > div {
@@ -65,7 +92,6 @@ html, button, input, select, textarea, .pure-g [class *= "pure-u"] {
 }
 
 section.social {
-	clear: left;
 	padding: 0em 0 1em;
 }
 
@@ -84,12 +110,15 @@ section.social {
 
 .avatar > img {
 	border-radius: 100%;
-	box-shadow: 1px #000000;
 }
 
 footer {
 	text-align: center;
 	color: #8c8c8c;
+}
+
+footer p {
+	margin: 0;
 }
 
 a {
@@ -99,6 +128,19 @@ a {
 
 .content a:hover {
 	text-decoration: underline;
+	color: #ff771d;
+
+	animation-name: reghover;
+	animation-duration: 0.2s;
+	animation-timing-function: ease;
+}
+
+.share {
+	font-size: 1.5em;
+}
+
+.social > a {
+	margin: 0 0.15em;
 }
 
 .article-image {
@@ -109,11 +151,53 @@ a {
 	background-size: cover;
 }
 
+.article-image-big {
+	width: 100%;
+	height: 10.6rem;
+}
+
 article {
 	background-color: white;
 	margin-bottom: 1em;
 	padding: 0.75em;
-	box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.4);
+	box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.4),
+		inset 0px 0px 50px 3px rgba(0,0,0,0.04);
+}
+
+article.project {
+	padding: 0em;
+	height: 100%;
+	position: relative;
+}
+
+article.project .article-image {
+	height: 100%;
+	width: 20%;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	box-shadow: inset 0px 0px 20px 2px rgba(0, 0, 0, 0.5);
+}
+
+article.project:nth-child(even) .article-image {
+	left: 0;
+}
+
+article.project:nth-child(odd) .article-image {
+	right: 0;
+}
+
+article.project section {
+	width: 80%;
+	padding: 1.2em;
+}
+
+article.project:nth-child(even) section {
+	margin-left: 20%;
+}
+
+article.project:nth-child(odd) section {
+	margin-right: 20%;
 }
 
 .list-title {
@@ -123,6 +207,99 @@ article {
 .home-about {
 	text-align: center;
 	font-size: 1.3em;
+}
+
+.paging {
+	text-align: center;
+	margin-bottom: 0.3em;
+}
+
+.paging-divider {
+	margin: 0 1em;
+}
+
+.category-holder {
+	margin: 1em 0 0;
+}
+
+h4.desc {
+	margin: -1.5em 0 1.5em;
+}
+
+h3.date {
+	margin: -1em 0 -0.25em;
+}
+
+.post-split {
+	height: 2px;
+	width: 80%;
+	/*background: linear-gradient(
+		to right,
+		rgba(31, 28, 24, 0),
+		rgb(31, 28, 24),
+		rgba(31, 28, 24,0));*/
+	background-color: #eee8e0;
+	margin: 1em auto 0;
+	clear: left;
+}
+
+@keyframes cathover {
+	0%   {
+		background-color: #1f1c18;
+	}
+	100% {
+		background-color: #d65f10;
+	}
+}
+
+a.category {
+	padding: 0.2em 0.38em;
+	background-color: #1f1c18;
+	color: white;
+	border-bottom: 0.2em solid #d65f10;
+	cursor: pointer;
+}
+
+a.category:hover {
+	background-color: #d65f10;
+	color: white;
+	text-decoration: none;
+
+	animation-name: cathover;
+	animation-duration: 0.2s;
+	animation-timing-function: ease;
+}
+
+a.tag {
+	font-weight: normal;
+}
+
+a.tag:hover {
+	
+}
+
+.categorywrap {
+	display: inline-block;
+	margin-bottom: 1em;
+}
+
+.tag-holder {
+	margin-top: 1em;
+}
+
+a.continue i {
+	font-size: 1.5em;
+	width: 100%;
+	text-align: center;
+	margin-top: 0.4em;
+}
+
+a.rss {
+	font-size: 0.7em;
+}
+
+#notfound {
+	text-align: center;
 }
 
 @media (min-width: 48em) {
@@ -142,7 +319,7 @@ article {
 	}
 
 	.content > div {
-		padding: 2em 3em 0;
+		padding: 2em 3em 1em;
 	}
 
 	nav.navbar ul {
@@ -160,5 +337,19 @@ article {
 
 	.home-about {
 		font-size: 1.5em;
+	}
+
+	.article-image-big {
+		height: 13.6rem;
+	}
+}
+
+@media (min-width: 64em) {
+	article {
+		padding: 2em;
+	}
+
+	.article-image-big {
+		height: 16.6rem;
 	}
 }

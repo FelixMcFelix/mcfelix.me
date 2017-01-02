@@ -10,10 +10,12 @@
 </h1>
 
 {{ range (.Paginate .Data.Pages).Pages }}
-<article>
+<article class="project">
+	<a href="{{ .Permalink }}">
+		<div class="article-image" style="background-image: url({{ $.Site.BaseURL }}images/{{ with .Params.image }}{{ . }}{{ else }}default.jpg{{ end }});"></div>
+	</a>
 	<section>
 			<a href="{{ .Permalink }}">
-				<div class="article-image" style="background-image: url({{ $.Site.BaseURL }}images/{{ with .Params.image }}{{ . }}{{ else }}default.jpg{{ end }});"></div>
 				<h2 class="title">{{ .Title }}</h2>
 				{{ with .Description }}<h4 class="desc">{{ . }}</h4>{{end}}
 			</a>

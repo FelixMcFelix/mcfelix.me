@@ -14,6 +14,7 @@ categories = [
     "golang",
 ]
 highlight = "true"
+image = "ffxiv-christmas.jpg"
 +++
 
 Hugo uses the excellent [go][] [html/template][gohtmltemplate] library for

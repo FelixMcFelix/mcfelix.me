@@ -1,0 +1,18 @@
+{{ partial "header" . }}
+{{ partial "close-header" . }}
+
+{{ partial "navbar" . }}
+<h1 class="list-title">
+{{ .Title }}
+</h1>
+{{ $data := .Data }}
+{{ range .Data.Terms.Alphabetical }}
+<article>
+	<div class="categorywrap"><a class="category" href="{{ $.Site.BaseURL }}{{ $data.Plural | urlize }}/{{ .Name | urlize }}/">{{ .Name }}</a></div>
+	{{ range first 5 .Pages.ByDate }}
+		<h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+	{{ end }}
+</article>
+{{ end }}
+
+{{ partial "footer.html" . }}

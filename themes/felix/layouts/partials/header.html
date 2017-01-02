@@ -8,7 +8,7 @@
 
 		<!-- WebFonts -->
 		<!-- <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet"> -->
-		<link href="https://fonts.googleapis.com/css?family=Alegreya:400,700" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Alegreya:400,400i,700" rel="stylesheet">
 
 		<!-- FontAwesome -->
 		<script src="https://use.fontawesome.com/54984e38b5.js"></script>
@@ -37,3 +37,8 @@
 		{{ with .Description }}<meta name="description" content="{{ . }}">{{ end }}
 		{{ with .Params.image }}<meta property="og:image" content="{{ $.Site.BaseURL }}images/{{ . }}">{{ end }}
 		<meta name="author" content="{{ .Site.Params.author }}" />
+
+		{{ if .RSSLink }}
+			<link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
+			<link href="{{ .RSSLink }}" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}" />
+		{{ end }}

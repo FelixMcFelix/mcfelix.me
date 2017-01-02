@@ -1,11 +1,15 @@
 {{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
 <nav class="paging">
 	{{ if .Paginator.HasPrev }}
-	<a href="{{ .URL }}page/{{ .Paginator.Prev.PageNumber }}" rel="nofollow">PREV</a>
+	<a href="{{ .URL }}page/{{ .Paginator.Prev.PageNumber }}" rel="nofollow"><i class="fa fa-chevron-left"></i> PREV</a>
+	{{ end }}
+
+	{{ if and .Paginator.HasPrev .Paginator.HasNext }}
+	<span class="paging-divider">|</span>
 	{{ end }}
 
 	{{ if .Paginator.HasNext }}
-	<a href="{{ .URL }}page/{{ .Paginator.Next.PageNumber }}" rel="nofollow">NEXT</a>
+	<a href="{{ .URL }}page/{{ .Paginator.Next.PageNumber }}" rel="nofollow">NEXT <i class="fa fa-chevron-right"></i></a>
 	{{ end }}
 </nav>
 {{ end }}

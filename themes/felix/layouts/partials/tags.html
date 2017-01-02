@@ -1,0 +1,9 @@
+{{ with .Params.Tags }}
+<aside class="tag-holder">
+	<i>Tags:
+	{{ range . }}
+		<a class="tag" href="{{ $.Site.BaseURL }}categories/{{ . | urlize }}/">{{ . }}</a>
+	{{ end }}
+	</i>
+</aside>
+{{ end }}

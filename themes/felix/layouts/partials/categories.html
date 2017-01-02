@@ -1,0 +1,5 @@
+<aside class="category-holder">
+	{{ range .Params.categories }}
+		<div class="categorywrap"><a class="category" href="{{ $.Site.BaseURL }}categories/{{ . | urlize }}/">{{ . }}</a></div>
+	{{ end }}
+</aside>

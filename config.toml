@@ -32,9 +32,9 @@ themep = "hugo-sustain"
   url = "blog/"
 [[menu.main]]
   name = "projects"
-  identifier = "projects"
+  identifier = "project"
   weight = 200
-  url = "projects/"
+  url = "project/"
 [[menu.main]]
   name = "resumé"
   identifier = "resume"

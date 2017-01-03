@@ -230,6 +230,10 @@ h3.date {
 	margin: -1em 0 -0.25em;
 }
 
+h3.links {
+	margin: 0 0 0.25em;
+}
+
 .post-split {
 	height: 2px;
 	width: 80%;
@@ -276,6 +280,10 @@ a.tag {
 
 a.tag:hover {
 	
+}
+
+a.tag:not(:last-child)::after {
+	content: ",";
 }
 
 .categorywrap {

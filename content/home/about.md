@@ -10,7 +10,6 @@ avatardesc = "Photograph of Kyle Simpson at Loch an Eilein, Aviemore."
 
 # Biography
 
-Hi! This is my bio. Here is where I talk about myself! I'm Kyle, pleased to make your acquaintance.
-Testing single line.
+I'm **Kyle Simpson**
 
 Testing double line!

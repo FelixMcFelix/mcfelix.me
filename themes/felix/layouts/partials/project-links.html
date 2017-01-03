@@ -1,0 +1,11 @@
+<h3 class="links">
+	{{ with .Params.github }}
+	<a href="{{ . }}" alt="Project GitHub" title="Project GitHub"><i class="fa fa-github"></i></a>
+	{{ end }}
+	{{ with .Params.link }}
+	<a href="{{ . }}" alt="Project link" title="Project link"><i class="fa fa-link"></i></a>
+	{{ end }}
+	{{ with .Params.report }}
+	<a href="{{ . }}" alt="Project report/dissertation" title="Project report/dissertation"><i class="fa fa-book"></i></a>
+	{{ end }}
+</h3>

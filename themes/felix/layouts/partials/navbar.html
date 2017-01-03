@@ -9,7 +9,7 @@
 	<div class="navbar-body pure-g">
 		{{ if .Site.Menus.main }}
 			{{ range sort .Site.Menus.main }}
-			<div class="pure-u-1-3 pure-u-md-1"><a href="{{ $burl }}{{ .URL }}">{{ .Name }}</a></div>
+			<div class="pure-u-1-3 pure-u-md-1"><a href="{{ $burl }}{{ .URL }}" {{ if .Pre }}target="_blank"{{ end }}>{{ .Name }}</a></div>
 			{{ end }}
 		{{ end }}
 	</div>

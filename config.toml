@@ -40,3 +40,4 @@ themep = "hugo-sustain"
   identifier = "resume"
   weight = 300
   url = "Vitae-KSimpson.pdf"
+  pre = "yup"

@@ -49,9 +49,11 @@
 
 	<div class="body">
 		<h1>{{ .Title }}</h1>
+		{{ with .Description }}<h4 class="desc">{{ . }}</h4>{{ end }}
 		{{ partial "date" . }}
 		{{ partial "tags" . }}
 		{{ partial "categories" . }}
+		{{ partial "project-links" . }}
 		<div class="post-split"></div>
 		{{ .Content }}
 	</div>

@@ -209,6 +209,10 @@ article.project:nth-child(odd) section {
 	font-size: 1.3em;
 }
 
+.home-about em {
+	color: #3cb5bf/*#d65f10*/;
+}
+
 .paging {
 	text-align: center;
 	margin-bottom: 0.3em;

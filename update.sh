@@ -1,3 +1,3 @@
-cd /var/mcfelix.me
+cd /var/sites/mcfelix.me
 git pull
 /opt/hugo/hugo

@@ -1,2 +1,3 @@
+cd /var/mcfelix.me
 git pull
-hugo
+/opt/hugo/hugo

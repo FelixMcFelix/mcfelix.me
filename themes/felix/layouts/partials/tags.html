@@ -2,7 +2,7 @@
 <aside class="tag-holder">
 	<i>Tags:
 	{{ range . }}
-		<a class="tag" href="{{ $.Site.BaseURL }}categories/{{ . | urlize }}/">{{ . }}</a>
+		<a class="tag" href="{{ $.Site.BaseURL }}tags/{{ . | urlize }}/">{{ . }}</a>
 	{{ end }}
 	</i>
 </aside>

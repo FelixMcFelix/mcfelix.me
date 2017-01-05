@@ -19,7 +19,7 @@
 				<h2 class="title">{{ .Title }}</h2>
 				{{ with .Description }}<h4 class="desc">{{ . }}</h4>{{ end }}
 			</a>
-			{{ partial "date" . }}
+			{{ partial "date-mn-yr" . }}
 			{{ partial "categories" . }}
 			{{ partial "project-links" . }}
 			<div class="summary">{{ .Summary }}</div>

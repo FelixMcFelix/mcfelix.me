@@ -1,0 +1,264 @@
+<!doctype html>
+<head>
+	<script type="text/javascript" src="lib/Sketch-lang.js"></script>
+
+    <link rel="icon" type="image/png" href="imgs/favicon.png">
+    <link rel="stylesheet" href="theme/paraiso-dark.css">
+    <link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+	<script type="text/javascript" src="lib/codemirror.js"></script>
+	<script type="text/javascript" src="addon/mode/simple.js"></script>
+	<link rel="stylesheet" href="lib/codemirror.css">
+	<script src="mode/mlang/mlang.js"></script>
+	<script type="text/javascript">
+        var renderClick;
+        window.onload = function(){
+
+    	    var myCodeMirror = CodeMirror.fromTextArea(document.getElementById('mlang-box'),{
+                lineNumbers: true,
+                styleActiveLine: true,
+                matchBrackets: true,
+    	    	mode: "mlang"
+	        });
+
+            myCodeMirror.setOption("theme", "paraiso-dark");
+            var can = document.getElementById("mlang-canvas");
+
+            var driver = Sketch.createSketch(can);
+            var glctx = driver.context;
+
+            glctx.clearColor(68/255, 46/255, 67/255,1.0);
+            glctx.clear(glctx.COLOR_BUFFER_BIT);
+
+            renderClick = function(){
+                var t = myCodeMirror.getValue();
+                driver.compile(t);
+            }
+	    }
+	</script>
+	<style type="text/css">
+	    body{
+		    background-color: rgb(25, 19, 26);
+            color: #b9b6b0;
+            font-family: 'Montserrat', sans-serif;
+	    }
+        .topbar{
+            position: absolute;
+            background-color: rgb(47, 30, 46);
+            left: 0px;
+            top: 0px;
+            padding-left: 1.25%;
+            padding-top: 0.5%;
+            font-size: 32px;
+            display: inline-block;
+            width: 100%;
+            height: 50px;
+            -webkit-box-shadow: 0px 3px 13px -1px rgba(0,0,0,0.75);
+            -moz-box-shadow: 0px 3px 13px -1px rgba(0,0,0,0.75);
+            box-shadow: 0px 3px 13px -1px rgba(0,0,0,0.75);
+        }
+        .title{
+            transition: color 0.25s ease 0s;
+            color: #b9b6b0;
+            display: inline-block;
+        }
+        .title:hover{
+            color: #ece9e3;
+        }
+        .flair{
+            color: #06b6ef;
+            display: inline-block;
+        }
+        .flair:hover{
+            color: #4bd3ff;
+            display: inline-block;
+        }
+        .link{
+            margin-left: 1%;
+            font-size: 18px;
+            font-style: italic;
+            display: inline;
+        }
+        .link-space{
+            margin-left: 0.5%;
+            display: inline;
+        }
+        a{
+            text-decoration: none;
+        }
+        a:link{
+            transition: color 0.1s ease 0s;
+            color: #b9b6b0;
+        }
+        a:visited{
+            color: #b9b6b0;
+        }
+        a:hover{
+            color: #ef6155;
+        }
+        a:focus{
+            color: #4bd3ff;
+        }
+        a:active{
+            color: #4bd3ff;
+        }
+        .link{
+            transition: color 0.25s ease 0s;
+            margin-left: 1%;
+            margin-right: 1%;
+            display: inline;
+        }
+        #display{
+            display: inline;
+			width: 48%;
+			position: absolute;
+			margin-top: 4.23%;
+			margin-left: 1%;
+        }
+        #texty{
+            display: inline;
+			position: absolute;
+			margin-left: 50%;
+			width: 48%;
+			margin-top: 5%;
+        }
+        
+
+.myButton {
+	-moz-box-shadow:inset 0px 1px 0px 0px #cf866c;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #cf866c;
+	box-shadow:inset 0px 1px 0px 0px #cf866c;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #d0451b), color-stop(1, #bc3315));
+	background:-moz-linear-gradient(top, #d0451b 5%, #bc3315 100%);
+	background:-webkit-linear-gradient(top, #d0451b 5%, #bc3315 100%);
+	background:-o-linear-gradient(top, #d0451b 5%, #bc3315 100%);
+	background:-ms-linear-gradient(top, #d0451b 5%, #bc3315 100%);
+	background:linear-gradient(to bottom, #d0451b 5%, #bc3315 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d0451b', endColorstr='#bc3315',GradientType=0);
+	background-color:#d0451b;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	border:1px solid #942911;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:'Montserrat', sans-serif;
+	font-size:13px;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #854629;
+}
+.myButton:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #bc3315), color-stop(1, #d0451b));
+	background:-moz-linear-gradient(top, #bc3315 5%, #d0451b 100%);
+	background:-webkit-linear-gradient(top, #bc3315 5%, #d0451b 100%);
+	background:-o-linear-gradient(top, #bc3315 5%, #d0451b 100%);
+	background:-ms-linear-gradient(top, #bc3315 5%, #d0451b 100%);
+	background:linear-gradient(to bottom, #bc3315 5%, #d0451b 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#bc3315', endColorstr='#d0451b',GradientType=0);
+	background-color:#bc3315;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+
+	</style>
+	<title>Sketch Development Platform</title>
+    <style>#forkongithub a{background:#2f1e2e;color:#fff;text-decoration:none;font-family:arial,sans-serif;text-align:center;font-weight:bold;padding:5px 40px;font-size:1rem;line-height:2rem;position:relative;transition:0.5s;}#forkongithub a:hover{background:#ef6155;color:#fff;}#forkongithub a::before,#forkongithub a::after{content:"";width:100%;display:block;position:absolute;top:1px;left:0;height:1px;background:#815ba4;}#forkongithub a::after{bottom:1px;top:auto;}@media screen and (min-width:800px){#forkongithub{position:absolute;display:block;top:0;right:0;width:200px;overflow:hidden;height:200px;z-index:9999;}#forkongithub a{width:200px;position:absolute;top:60px;right:-60px;transform:rotate(45deg);-webkit-transform:rotate(45deg);-ms-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);box-shadow:4px 4px 10px rgba(0,0,0,0.8);}}</style><span id="forkongithub"><a href="https://github.com/felixmcfelix/laughing-ironman">Fork me on GitHub</a></span>
+</head>
+<body>
+<div class="topbar">
+    <div class="title"><b>Sketch<div class="flair">.</div></b></div>
+    <div class="link-space">
+        <a href="https://github.com/FelixMcFelix/laughing-ironman/archive/master.zip"><div class="link">Download</div></a>
+        <a href="docs/"><div class="link">API</div></a>
+        <a href="#"><div class="link">Tutorial</div></a>
+    </div>
+</div>
+<div id="display">
+	<p>
+		<canvas id="mlang-canvas" width="800" height="600">You still need a modern browser...............</canvas>
+	</p>
+</div>
+<div id="texty">
+	<textarea id="mlang-box" autofocus="true" cols="50" rows="6">
+point yellow = {1,1,0};
+point orange = {1,0.75,0};
+point white = {1,1,1};
+
+point vec1to2 = {-width*1/4, height/2};
+point vec1to3 = {width*1/4, height/2};
+
+polygon t1 = ({width*1/4,height/2}+{width*3/4,height/2})+{width/2,0};
+polygon t2 = {width/2,0} + {width*3/4,height/2} + {width*3/4 - 43.3, height/2 -25} + {width/2,50};
+polygon t3 = {width/2,50} + {width*3/4 - 43.3, height/2 -25} + {width/4 + 46.3,height/2-25};
+
+function init()->void{
+}
+
+function sub_osc(num t, num p)->num{
+    return 4*((t%(p/2))/p);
+}
+
+function oscillator(num time, num period)->num{
+    num mode = (2*time/period)%2;
+    num sub = sub_osc(time, period);
+    num out;
+    if(mode ?< 1){
+        return -1 + sub;
+    } else{
+        return 1 - sub;
+    }
+    return out;
+}
+
+function draw_shadow(){
+    polygon tcopy = t1;
+    point shadowvec = {20, -15};
+    point shadowcolour = {47/255, 30/255, 46/255};
+    
+    tcopy = (tcopy ~ shadowcolour) -> shadowvec;
+    
+    draw tcopy;
+    draw tcopy -> vec1to2;
+    draw tcopy -> vec1to3;
+}
+
+function colour_triangles(point light, point mid, point dark)->void{
+    t1 = t1 ~ dark;
+    t2 = t2 ~ light;
+    t3 = t3 ~ mid;
+}
+
+function draw_triforce(point shift, point hover)->void{
+    draw (t1 -> shift) -> hover;
+    draw (t2 -> shift) -> hover;
+    draw (t3 -> shift) -> hover;
+}
+
+function render(num time)->void{
+    clear;
+    
+    draw_shadow();
+    
+    num k = 0.5+(oscillator(time, 7000)+1)/2;
+    num l = ((oscillator(time, 7000)+1)/4);
+   
+    point white = {1,1,k};
+    point yellow = {1,1,l/2};
+    point orange = {1, 0.75, l/4}
+    
+    point hover = {0, oscillator(time+3500,7000)*10};
+    
+    colour_triangles(white, yellow, orange);
+    
+    draw_triforce({0,0}, hover);
+    draw_triforce(vec1to2, hover);
+    draw_triforce(vec1to3, hover);
+}
+</textarea>
+<a href="#" class="myButton" onclick="renderClick()">Render</a>
+</div>
+</body>

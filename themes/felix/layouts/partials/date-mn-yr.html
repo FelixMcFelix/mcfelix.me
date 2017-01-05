@@ -1,0 +1,5 @@
+<h3 class="date">
+	<time datetime="{{ .Date.Format "2006-01-02T15:04:05JST" }}">
+		{{ with .Site.Params.DateForm }}{{ $.Date.Format . }}{{ else }}{{ $.Date.Format "January 2006" }}{{ end }}
+	</time>
+</h3>

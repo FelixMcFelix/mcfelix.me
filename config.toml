@@ -8,7 +8,7 @@ themep = "hugo-sustain"
   post = "/:year/:month/:day/:slug"
 
 [params]
-  avatar = "profile.png"
+  avatar = "profile.jpg"
   author = "Kyle A. Simpson"
   description = "Portfolio and personal blog site of Kyle A. Simpson."
 

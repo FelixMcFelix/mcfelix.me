@@ -1,0 +1,23 @@
+{{ $ := .root }}
+{{ $page := .page }}
+
+
+<h2>Recent Publications and Conference Papers</h2>
+<ul>
+{{ range first 5 ( where $.Site.RegularPages "Type" "publication" ) }}
+	<li>
+	{{ $pub := . }}
+	<strong>{{ .Title }}</strong>:
+	{{ with .Params.authors }}
+		<em>{{ delimit . ", " | markdownify }}</em>.{{ end }}
+	{{ with .Params.publication_short }}
+		<br />{{ . | markdownify }}{{ if $pub.Params.to_appear }}, to appear.{{ else }}.{{end}}
+	{{ end }}
+	{{ partial "paper-buttons" . }}
+	</li>
+{{ end }}
+</ul>
+
+{{ if ( gt ( len ( where $.Site.RegularPages "Type" "publication" ) ) 5 ) }}
+<a href="{{ $.Site.BaseURL }}/publication">More...</a>
+{{ end }}

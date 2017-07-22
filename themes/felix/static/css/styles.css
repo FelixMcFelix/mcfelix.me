@@ -22,9 +22,11 @@
 @keyframes reghover {
 	0%   {
 		color: #d65f10;
+		border-color: #d65f10;
 	}
 	100% {
 		color: #ff771d;
+		border-color: #ff771d;
 	}
 }
 
@@ -60,8 +62,13 @@
 }
 
 .navbar-body {
-	max-width: 20em;
+	max-width: 21em;
 	margin: 0 auto;
+}
+
+.navbar-body-buffer {
+	margin: 0 1em;
+	justify-content: center;
 }
 
 .navbar-body div {
@@ -74,6 +81,7 @@
 
 nav a::before, nav a::after, a {
 	color: #d65f10;
+	border-color: #d65f10;
 }
 
 body {
@@ -112,6 +120,13 @@ section.social {
 	border-radius: 100%;
 }
 
+section#publications {
+	/*#9c907f*/
+	/*#d4c0a6*/
+	border-left: #d4c0a6 5px solid;
+    padding: 0 1em;
+}
+
 footer {
 	text-align: center;
 	color: #9c907f/*#8c8c8c*/;
@@ -126,9 +141,19 @@ a {
 	font-weight: bold;
 }
 
+.paper-btn {
+	border: 1px solid;
+	border-radius: 0.25em;
+	padding: 0 0.25em;
+	white-space: nowrap;
+	display: inline-block;
+	margin: 0.05em 0;
+}
+
 .content a:hover {
 	text-decoration: underline;
 	color: #ff771d;
+	border-color: #ff771d;
 
 	animation-name: reghover;
 	animation-duration: 0.2s;
@@ -200,13 +225,14 @@ article.project:nth-child(odd) section {
 	margin-right: 20%;
 }
 
-.list-title {
-	margin-left: 0.5em;
+.list-title, .pub-year {
+	margin-left: 1rem;
 }
 
 .home-about {
 	text-align: center;
 	font-size: 1.3em;
+	padding: 0;
 }
 
 .home-about em {
@@ -309,6 +335,17 @@ a.rss {
 	text-align: center;
 }
 
+/*
+* iPhone 6 starting res
+* Only want padding in this band of device widths, screw the iPhone 5/SE/Whatever.
+*/
+@media (min-width: 23em) {
+	.home-about {
+		padding: 0 1em;
+	}
+}
+
+/*med devices*/
 @media (min-width: 48em) {
 	.navbar {
 		position: fixed;
@@ -344,6 +381,7 @@ a.rss {
 
 	.home-about {
 		font-size: 1.5em;
+		padding: 0;
 	}
 
 	.article-image-big {
@@ -356,6 +394,7 @@ a.rss {
 	}
 }
 
+/*larger ones*/
 @media (min-width: 64em) {
 	article {
 		padding: 2em;

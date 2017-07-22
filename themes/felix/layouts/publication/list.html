@@ -1,0 +1,32 @@
+{{ partial "header" . }}
+{{ partial "close-header" . }}
+
+{{ partial "navbar" . }}
+<h1 class="list-title">
+{{ .Title }}
+{{ with .RSSLink }}
+<a href="{{ . }}" type="application/rss+xml" target="_blank" class="rss"><i class="fa fa-rss-square"></i></a>
+{{ end }}
+</h1>
+
+{{ range .Data.Pages.GroupByDate "2006" }}
+<h2 class="pub-year">{{ .Key }}</h2>
+<ul>
+{{ range .Pages }}
+	<li>
+	{{ $pub := . }}
+	<strong>{{ .Title }}</strong>:<br />
+	{{ with .Params.authors }}
+		<em>{{ delimit . ", " | markdownify }}</em>.{{ end }}
+	{{ with .Params.publication }}
+		<br />{{ . | markdownify }}{{ if $pub.Params.to_appear }}, to appear.{{ else }}.{{end}}
+	{{ end }}
+	{{ partial "paper-buttons" . }}
+	</li>
+{{ end }}
+</ul>
+{{ end }}
+
+{{ partial "pagination.html" . }}
+
+{{ partial "footer.html" . }}

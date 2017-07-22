@@ -1,0 +1,6 @@
+{{ if .Params.urls }}
+<br />
+{{ range .Params.urls }}
+<a href="{{ index . 1 }}" class="paper-btn">{{ index . 0 }}</a>
+{{end}}
+{{end}}

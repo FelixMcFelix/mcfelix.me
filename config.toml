@@ -31,6 +31,11 @@ themep = "hugo-sustain"
   identifier = "blog"
   url = "blog/"
 [[menu.main]]
+  name = "publications"
+  identifier = "publication"
+  weight = 400
+  url = "publication/"
+[[menu.main]]
   name = "projects"
   identifier = "project"
   weight = 200

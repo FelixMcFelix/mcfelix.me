@@ -6,12 +6,14 @@
 	<div class="navbar-split"></div>
 
 	{{ $burl := .Site.BaseURL }}
-	<div class="navbar-body pure-g">
+	<div class="navbar-body">
+		<div class="navbar-body-buffer pure-g">
 		{{ if .Site.Menus.main }}
 			{{ range sort .Site.Menus.main }}
 			<div class="pure-u-1-3 pure-u-md-1"><a href="{{ $burl }}{{ .URL }}" {{ if .Pre }}target="_blank"{{ end }}>{{ .Name }}</a></div>
 			{{ end }}
 		{{ end }}
+		</div>
 	</div>
 
 	<div class="navbar-split"></div>

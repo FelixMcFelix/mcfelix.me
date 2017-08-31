@@ -23,7 +23,7 @@ pub_type = ""
 # Publication name and optional abbreviated version.
 publication = "23rd International Conference on Principles and Practice of Constraint Programming"
 publication_short = "CP 2017"
-to_appear = true
+to_appear = false
 
 # Abstract and optional shortened version.
 abstract = ""

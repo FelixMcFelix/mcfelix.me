@@ -1,0 +1,6 @@
+var posts2016 = [
+{"is_played":1,"subtype_class":"post-subtype-label-diary","mii":"happy","aid":"6437256809142767911","body":":'')","created_at":"16/11/2016 19:46","subtype":"Play Journal","ss":1,"title":"14866558073093299479","id":"AYMHAAADAAB2V0fT5YRPcA","empathy_count":"4"},
+{"is_played":1,"subtype_class":"post-subtype-label-diary","mii":"surprised","body":":')","created_at":"16/11/2016 02:09","subtype":"Play Journal","ss":1,"title":"14866558073093299479","id":"AYMHAAADAAB2V0fTsUqTVg","empathy_count":"4"},
+{"is_played":1,"subtype_class":"post-subtype-label-diary","mii":"happy","aid":"6437256809142277267","body":"Sage advice, Don.","created_at":"16/11/2016 02:02","subtype":"Play Journal","ss":1,"title":"14866558073093299479","id":"AYMHAAADAAB2V0fTsCv6Tw","empathy_count":"3"},
+{"is_played":1,"subtype_class":"post-subtype-label-diary","mii":"happy","body":"‹3","created_at":"09/01/2016 14:36","subtype":"Play Journal","ss":1,"title":"14866558073158541674","id":"AYQHAAABAACNUKFNCz72kA"},
+]

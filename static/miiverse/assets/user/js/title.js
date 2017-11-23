@@ -1,0 +1,1 @@
+var titles = {"14866558073615079159":{"name":"Xenoblade Chronicles 3D"},"14866558073158541674":{"name":"The Legend of Zelda™: Link's Awakening DX™"},"14866558073093299479":{"name":"Animal Crossing: New Leaf"},"6437256808820972802":{"name":"Xenoblade Chronicles X"}};

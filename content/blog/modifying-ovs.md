@@ -3,8 +3,8 @@ title = "Custom OpenVSwitch Actions"
 date = 2017-11-23T14:54:55Z
 description = ""
 image = ""
-tags = []
-categories = []
+tags = ["C", "Open vSwitch", "SDN"]
+categories = ["Development", "Tutorial", "Networks"]
 draft = true
 +++
 
@@ -19,7 +19,7 @@ in datapath/linux/compat/include/linux/openvswitch.h:
 ```c
 enum ovs_action_attr {
 	/* ... */
-	OVS_ACTION_ATTR_PROBDROP,     /* float32, probability in (0,1] */
+	OVS_ACTION_ATTR_PROBDROP,     /* unit32_t, probability in [0,2^32 -1] */
 	/* ... */
 }
 ```
@@ -28,7 +28,7 @@ enum ovs_action_attr {
 in lib/packets.h:
 	prototype for...
 ```c
-bool prob_drop(uint32_t almost_prob);
+bool prob_drop(uint32_t prob);
 
 #endif /* packets.h */
 
@@ -37,17 +37,28 @@ bool prob_drop(uint32_t almost_prob);
 in lib/packets.c:
 	something (???)
 ```c
+/* Ask for a random number.
+   "p" is the amount we should let through, here true means drop,
+   false means let it pass on */
 bool
-prob_drop(uint32_t almost_prob)
+prob_drop(uint32_t prob)
 {
-	float p = *(float*)&almost_prob;
-	float roll = rand()/(float)RAND_MAX;
-	return roll > p;
+	unsigned int roll_i;
+	random_bytes(&roll_i, sizeof(roll_i));
+	return roll_i > prob;
 }
 ```
 
-in datapath/actions.c:
+in datapath/actions.c: (can't use rand() in the kernel).
 ```c
+static bool prob_drop(uint32_t prob)
+{
+	unsigned int roll_i;
+	get_random_bytes(&roll_i, sizeof(roll_i));
+
+	return roll_i > prob;
+}
+
 static int do_execute_actions(/* ... */)
 {
 	/* ... */
@@ -56,7 +67,7 @@ static int do_execute_actions(/* ... */)
 	case OVS_ACTION_ATTR_PROBDROP:
 		/* No need to free, taken care of for us
 		   This function just reads the attribute to
-		   hard convert to a float. */
+		   know if we should drop. */
 		if(prob_drop(nla_get_u32(a)))
 		{
 			rem = 0;
@@ -102,6 +113,8 @@ str_to_f(const char *str, float *valuep)
 }
 ```
 
+(Ignore last two, keep for posterity atm)
+
 in include/openvswitch/ofp-actions.h:
 ```c
 #define OFPACTS
@@ -116,7 +129,7 @@ in include/openvswitch/ofp-actions.h:
  * Used for OFPAT_PROBDROP */
 struct ofpact_probdrop {
 	struct ofpact ofpact;
-	float prob;           /* Float probability, punned to int on receipt. */
+	uint32_t prob;           /* Uint probability, "covers" 0->1 range. */
 };
 ```
 
@@ -128,7 +141,7 @@ enum ofp_raw_action_type {
 	/* NX1.3+(47): struct nx_action_decap, ... */
 	NXAST_RAW_DECAP,
 
-	/* OF1.0+(29): float. */ //(ex. uint32_t)
+	/* OF1.0+(29): uint32_t. */
 	OFPAT_RAW_PROBDROP,
 
 	/* ... */
@@ -196,7 +209,8 @@ ofpact_check__( /* ... */ )
 	switch (a->type) {
 	/* ... */
 	case OFPACT_PROBDROP:
-		return 0; /* My method needs no checking. */
+		return 0;
+		/* My method needs no checking. Probably. */
 	}
 }
 
@@ -226,18 +240,21 @@ encode_PROBDROP(const struct ofpact_probdrop *prob,
 					enum ofp_version ofp_version OVS_UNUSED,
 					struct ofpbuf *out)
 {
-	float p = prob->prob;
+	uint32_t p = prob->prob;
 
 	put_OFPAT_PROBDROP(out, p);
 }
 
 /* Hmm. */
 static enum ofperr
-decode_OFPAT_RAW_PROBDROP(float prob,
+decode_OFPAT_RAW_PROBDROP(uint32_t prob,
 							enum ofp_version ofp_version OVS_UNUSED,
 							struct ofpbuf *out)
 {
-	ofpact_put_PROBDROP(out)->prob = prob;
+	struct ofpact_probdrop *op;
+	op = ofpact_put_PROBDROP(out);
+	op->prob = prob;
+
 	return 0;
 }
 
@@ -246,22 +263,11 @@ static char * OVS_WARN_UNUSED_RESULT
 parse_prob(char *arg, struct ofpbuf *ofpacts)
 {
 	struct ofpact_probdrop *probdrop;
-	float prob;
+	uint32_t prob;
 	char *error;
 
-	/* Simple key-value walker. Useful for complex actions. */
-	char *key;
-	char *value;
-	while (ofputil_parse_key_value(&arg, &key, &value)) {
-		if (!strcmp(key, "P_send")) {
-			error = str_to_f(value, &prob);
-		} else {
-			return xasprintf("invalid key '%s' in probdrop argument",
-								key);
-		}
-
-		if (error) return error;
-	}
+	error = str_to_u32(arg, &prob);
+	if (error) return error;
 
 	probdrop = ofpact_put_PROBDROP(ofpacts);
 	probdrop->prob = prob;
@@ -284,8 +290,25 @@ format_PROBDROP(const struct ofpact_probdrop *a,
 					const struct ofputil_port_map *port_map OVS_UNUSED,
 					struct ds *s)
 {
-	ds_put_format(s, "%sP_send:%s%.2f",
-					colors.param, colors.end, a->prob);
+	/* Feel free to use e.g. colors.param, colors.end around parameter names */
+	ds_put_format(s, "probdrop:%"PRIu32, a->prob);
+}
+```
+
+If you want more complex handling:
+```c
+/* Simple key-value walker. Useful for complex actions. */
+char *key;
+char *value;
+while (ofputil_parse_key_value(&arg, &key, &value)) {
+	if (!strcmp(key, "P_send")) {
+		error = str_to_u32(value, &prob);
+	} else {
+		return xasprintf("invalid key '%s' in probdrop argument",
+							key);
+	}
+
+	if (error) return error;
 }
 ```
 
@@ -294,6 +317,8 @@ in build-aux/extract-ofp-actions:
 types['float'] =    {"size": 4, "align": 4, "ntoh": None,     "hton": None}
 types['double'] =   {"size": 8, "align": 8, "ntoh": None,     "hton": None}
 ```
+
+(ignore that ^^)
 
 in ofproto/ofproto-dpif-xlate.c (This seems to prep and parse things on behalf of the very first functions we wrote.)
 ```c
@@ -304,15 +329,78 @@ do_xlate_actions( /* ... */ )
 	/* ... */
 
 	case OFPACT_PROBDROP: {
-		/* Get the probability, if we need to drop set self to last action. */
-		struct ofpact_probdrop *ofpd = ofpact_get_PROBDROP(a);
-		float prob = ofpd->prob;
-
-		nl_msg_put_u32(ctx->odp_actions, OVS_ACTION_ATTR_PROBDROP, *(uint32_t*)&prob);
+		/* NOT THIS: e.g. this will crash. Xlate is weirdly fragile.
+		nl_msg_put_u32(ctx->odp_actions, OVS_ACTION_ATTR_PROBDROP, 
+		ofpact_get_PROBDROP(a)->prob);
+		*/
+		struct ofpact_probdrop *op = ofpact_get_PROBDROP(a);
+		uint32_t prob = op->prob;
+		nl_msg_put_u32(ctx->odp_actions, OVS_ACTION_ATTR_PROBDROP, prob);
 
 		break;
 	}
+	}
+}
 
+/* ... */
+
+static bool
+xlate_fixup_actions()
+{
+	/* ... */
+	switch ((enum ovs_action_attr) type) {
+	/* ... */
+	case OVS_ACTION_ATTR_PROBDROP:
+			ofpbuf_put(b, a, nl_attr_len_pad(a, left));
+	/* ... */
+	}
+	/* ... */
+}
+
+/* ... */
+
+/* No action can undo the packet drop: reflect this. */
+static bool
+reversible_actions(const struct ofpact *ofpacts, size_t ofpacts_len)
+{
+	const struct ofpact *a;
+
+	OFPACT_FOR_EACH (a, ofpacts, ofpacts_len) {
+		switch (a->type) {
+		/*... */
+		case OFPACT_PROBDROP:
+			return false;
+		}
+	}
+	return true;
+}
+
+/* ... */
+
+/* PROBDROP likely doesn't require explicit thawing. */
+static void
+freeze_unroll_actions( /* ... */ )
+{
+	/* ... */
+	switch (a->type) {
+		case OFPACT_PROBDROP:
+			/* These may not generate PACKET INs. */
+			break;
+	}
+}
+
+/* ... */
+
+/* Naturally, don't need to recirculate since we don't change packets. */
+static void
+recirc_for_mpls(const struct ofpact *a, struct xlate_ctx *ctx)
+{
+	/* ... */
+
+	switch (a->type) {
+	case OFPACT_PROBDROP:
+	default:
+		break;
 	}
 }
 ```
@@ -326,11 +414,9 @@ format_odp_action( /* ... */ )
 	switch (type) {
 	/* ... */
 
-	case OVS_ACTION_ATTR_PROBDROP: {
-		uint32_t p = nl_attr_get_u32(a);
-		ds_put_format(ds, "pdrop(%.2f)", *(float*)&p);
+	case OVS_ACTION_ATTR_PROBDROP: 
+		ds_put_format(ds, "pdrop(%"PRIu32")", nl_attr_get_u32(a));
 		break;
-	}
 
 	/* ... */
 	}
@@ -343,7 +429,7 @@ odp_action_len(uint16_t type)
 
 	switch ((enum ovs_action_attr) type) {
 	/* ... */
-	case OVS_ACTION_ATTR_PROBDROP: return sizeof(float);
+	case OVS_ACTION_ATTR_PROBDROP: return sizeof(uint32_t);
 	}
 }
 ```
@@ -352,7 +438,7 @@ in datapath/flow_netlink.c:
 ```c
 static const u32 action_lens[OVS_ACTION_ATTR_MAX + 1] = {
 	/* ... */
-	[OVS_ACTION_ATTR_PROBDROP] = sizeof(float),
+	[OVS_ACTION_ATTR_PROBDROP] = sizeof(u32),
 };
 ```
 
@@ -455,3 +541,7 @@ dpif_sflow_read_actions( /* ... */ )
 	}
 }
 ```
+
+Now: go through all [this crap](http://docs.openvswitch.org/en/latest/intro/install/general/) and [even this](https://github.com/mininet/mininet/wiki/Installing-new-version-of-Open-vSwitch) to install. Then how do we test? Mininet!
+
+For the love of god, debug in gdb. ARGH.

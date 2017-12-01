@@ -19,7 +19,10 @@ in datapath/linux/compat/include/linux/openvswitch.h:
 ```c
 enum ovs_action_attr {
 	/* ... */
-	OVS_ACTION_ATTR_PROBDROP,     /* unit32_t, probability in [0,2^32 -1] */
+
+	/* after ifndef _KERNEL. the equals is thus ABSOLUTELY NECESSARY */
+
+	OVS_ACTION_ATTR_PROBDROP=22,     /* unit32_t, probability in [0,2^32 -1] */
 	/* ... */
 }
 ```
@@ -53,10 +56,7 @@ in datapath/actions.c: (can't use rand() in the kernel).
 ```c
 static bool prob_drop(uint32_t prob)
 {
-	unsigned int roll_i;
-	get_random_bytes(&roll_i, sizeof(roll_i));
-
-	return roll_i > prob;
+	return prandom_u32() > prob;
 }
 
 static int do_execute_actions(/* ... */)
@@ -70,7 +70,9 @@ static int do_execute_actions(/* ... */)
 		   know if we should drop. */
 		if(prob_drop(nla_get_u32(a)))
 		{
-			rem = 0;
+			while (rem) {
+				a = nla_next(a, &rem);
+			}
 		}
 		break;
 	}
@@ -322,23 +324,26 @@ types['double'] =   {"size": 8, "align": 8, "ntoh": None,     "hton": None}
 
 in ofproto/ofproto-dpif-xlate.c (This seems to prep and parse things on behalf of the very first functions we wrote.)
 ```c
+/* Put this with the other "compose" functions. */
+static void
+compose_probdrop_action(struct xlate_ctx *ctx, struct ofpact_probdrop *op)
+{
+	uint32_t prob = op->prob;
+
+	nl_msg_put_u32(ctx->odp_actions, OVS_ACTION_ATTR_PROBDROP, prob);
+}
+
+/* ... */
+
 static void
 do_xlate_actions( /* ... */ )
 {
 	switch (a->type) {
 	/* ... */
 
-	case OFPACT_PROBDROP: {
-		/* NOT THIS: e.g. this will crash. Xlate is weirdly fragile.
-		nl_msg_put_u32(ctx->odp_actions, OVS_ACTION_ATTR_PROBDROP, 
-		ofpact_get_PROBDROP(a)->prob);
-		*/
-		struct ofpact_probdrop *op = ofpact_get_PROBDROP(a);
-		uint32_t prob = op->prob;
-		nl_msg_put_u32(ctx->odp_actions, OVS_ACTION_ATTR_PROBDROP, prob);
-
+	case OFPACT_PROBDROP:
+		compose_probdrop_action(ctx, ofpact_get_PROBDROP(a));
 		break;
-	}
 	}
 }
 
@@ -545,3 +550,21 @@ dpif_sflow_read_actions( /* ... */ )
 Now: go through all [this crap](http://docs.openvswitch.org/en/latest/intro/install/general/) and [even this](https://github.com/mininet/mininet/wiki/Installing-new-version-of-Open-vSwitch) to install. Then how do we test? Mininet!
 
 For the love of god, debug in gdb. ARGH.
+
+If shit starts breaking for no reason, check `dmesg`. Huh, "netlink: Flow actions may not be safe on all matching packets." Whoops, guess the fucking compiler never told you about this one case switch HUH BUDDY.
+
+In datapath/flow_netlink.c
+```c
+static int __ovs_nla_copy_actions( /*...*/ )
+{
+	/* ... */
+	switch (type) {
+	/* ... */
+	case OVS_ACTION_ATTR_PROBDROP:
+		/* Finalest sanity checks in the kernel. */
+		break;
+	/* ... */
+	}
+	/* ... */
+}
+```

@@ -2,7 +2,9 @@ baseurl = "https://mcfelix.me/"
 languageCode = "en-GB"
 title = "Kyle Simpson"
 theme = "felix"
-themep = "hugo-sustain"
+
+# Code Highlighting stuff
+pygmentsCodeFences = true
 
 [permalinks]
   post = "/:year/:month/:day/:slug"

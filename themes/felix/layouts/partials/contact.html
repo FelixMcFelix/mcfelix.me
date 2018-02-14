@@ -22,4 +22,8 @@
 	{{ with .Site.Social.stackoverflow }}
 	<a href="http://stackoverflow.com/{{ . }}" alt="Stack Overflow" title="Stack Overflow"><i class="fa fa-stack-overflow"></i></a>
 	{{ end }}
+
+	{{ with .Site.Social.keybase }}
+	<a href="https://keybase.io/{{ . }}" alt="Keybase" title="Keybase"><i class="fa fa-key"></i></a>
+	{{ end }}
 </section>

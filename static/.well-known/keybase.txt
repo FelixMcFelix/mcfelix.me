@@ -1,0 +1,55 @@
+==================================================================
+https://keybase.io/felixmcfelix
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://mcfelix.me
+  * I am felixmcfelix (https://keybase.io/felixmcfelix) on keybase.
+  * I have a public key ASCrKI162zFjtF8QXmZQaPa48LzbZwg3zBSg8TDj7oxFKgo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120ab288d7adb3163b45f105e665068f6b8f0bcdb670837cc14a0f130e3ee8c452a0a",
+      "host": "keybase.io",
+      "kid": "0120ab288d7adb3163b45f105e665068f6b8f0bcdb670837cc14a0f130e3ee8c452a0a",
+      "uid": "c944d6aeda37498d5c38a1e0d3a5d819",
+      "username": "felixmcfelix"
+    },
+    "merkle_root": {
+      "ctime": 1518609852,
+      "hash": "05df2ff02e4bcc95f980707e773a0553faebe5ef78c7532da4c63adc6a3b52a0bca404185fd8a1361e257b7b7a20495428d6ac6eeca3b3394169d91681306c91",
+      "hash_meta": "60704a3f594b1de16db3156b8291d98b397596ace167eb921455d8f52cc1505d",
+      "seqno": 2081133
+    },
+    "service": {
+      "hostname": "mcfelix.me",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "1.0.40"
+  },
+  "ctime": 1518609868,
+  "expire_in": 504576000,
+  "prev": "fd2b45f445f5f9d0b51bf9443465f22d87f6223179abc4c71bd65dc4f6c09275",
+  "seqno": 4,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgqyiNetsxY7RfEF5mUGj2uPC822cIN8wUoPEw4+6MRSoKp3BheWxvYWTFA0Z7ImJvZHkiOnsia2V5Ijp7ImVsZGVzdF9raWQiOiIwMTIwYWIyODhkN2FkYjMxNjNiNDVmMTA1ZTY2NTA2OGY2YjhmMGJjZGI2NzA4MzdjYzE0YTBmMTMwZTNlZThjNDUyYTBhIiwiaG9zdCI6ImtleWJhc2UuaW8iLCJraWQiOiIwMTIwYWIyODhkN2FkYjMxNjNiNDVmMTA1ZTY2NTA2OGY2YjhmMGJjZGI2NzA4MzdjYzE0YTBmMTMwZTNlZThjNDUyYTBhIiwidWlkIjoiYzk0NGQ2YWVkYTM3NDk4ZDVjMzhhMWUwZDNhNWQ4MTkiLCJ1c2VybmFtZSI6ImZlbGl4bWNmZWxpeCJ9LCJtZXJrbGVfcm9vdCI6eyJjdGltZSI6MTUxODYwOTg1MiwiaGFzaCI6IjA1ZGYyZmYwMmU0YmNjOTVmOTgwNzA3ZTc3M2EwNTUzZmFlYmU1ZWY3OGM3NTMyZGE0YzYzYWRjNmEzYjUyYTBiY2E0MDQxODVmZDhhMTM2MWUyNTdiN2I3YTIwNDk1NDI4ZDZhYzZlZWNhM2IzMzk0MTY5ZDkxNjgxMzA2YzkxIiwiaGFzaF9tZXRhIjoiNjA3MDRhM2Y1OTRiMWRlMTZkYjMxNTZiODI5MWQ5OGIzOTc1OTZhY2UxNjdlYjkyMTQ1NWQ4ZjUyY2MxNTA1ZCIsInNlcW5vIjoyMDgxMTMzfSwic2VydmljZSI6eyJob3N0bmFtZSI6Im1jZmVsaXgubWUiLCJwcm90b2NvbCI6Imh0dHBzOiJ9LCJ0eXBlIjoid2ViX3NlcnZpY2VfYmluZGluZyIsInZlcnNpb24iOjF9LCJjbGllbnQiOnsibmFtZSI6ImtleWJhc2UuaW8gZ28gY2xpZW50IiwidmVyc2lvbiI6IjEuMC40MCJ9LCJjdGltZSI6MTUxODYwOTg2OCwiZXhwaXJlX2luIjo1MDQ1NzYwMDAsInByZXYiOiJmZDJiNDVmNDQ1ZjVmOWQwYjUxYmY5NDQzNDY1ZjIyZDg3ZjYyMjMxNzlhYmM0YzcxYmQ2NWRjNGY2YzA5Mjc1Iiwic2Vxbm8iOjQsInRhZyI6InNpZ25hdHVyZSJ9o3NpZ8RAYu6VL7zeDNzu/Ucq69vEO0KAufuX1v+n50VJkWIqkbmMuEcwZmVgRR5ppEiW1DLUluci+85TPD8lAuqVeHZiC6hzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIJ5phj/S2aaIkHWtcvlOzE4BjJOBlRKG2tuqtgb993vXo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/felixmcfelix
+
+==================================================================

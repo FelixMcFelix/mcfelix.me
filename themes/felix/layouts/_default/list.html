@@ -5,7 +5,7 @@
 <h1 class="list-title">
 {{ .Title }}
 {{ with .RSSLink }}
-<a href="{{ . }}" type="application/rss+xml" target="_blank" class="rss"><i class="fa fa-rss-square"></i></a>
+<a href="{{ . }}" type="application/rss+xml" target="_blank" class="rss"><i class="fas fa-rss-square"></i></a>
 {{ end }}
 </h1>
 
@@ -24,7 +24,7 @@
 			{{ partial "tags" . }}
 			{{ if .Truncated }}
 			<a class="continue" href="{{ .Permalink }}">
-				<i class="fa fa-ellipsis-h" title="Continue reading..." alt="Continue reading..."></i>
+				<i class="fas fa-ellipsis-h" title="Continue reading..." alt="Continue reading..."></i>
 			</a>
 			{{ end }}
 	</section>

@@ -95,6 +95,22 @@ body {
 	color: #2f261b;
 }
 
+.content p {
+	text-indent: 1em;
+}
+
+p:first-of-type,
+div.post-split + p,
+.content hr + p,
+.content h1 + p,
+.content h2 + p,
+.content h3 + p,
+.content h4 + p,
+.content h5 + p,
+.content h6 + p {
+	text-indent: 0em;
+}
+
 html, button, input, select, textarea, .pure-g [class *= "pure-u"] {
 	font-family: "Alegreya", "Lora", Georgia, Times, "Times New Roman", serif;
 }

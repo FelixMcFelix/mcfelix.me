@@ -264,12 +264,17 @@ h3.links {
 	margin: 0 0 0.25em;
 }
 
-.post-split {
+.post-split, hr {
 	height: 2px;
 	width: 80%;
 	background-color: #eee8e0;
 	margin: 1em auto 0;
 	clear: left;
+}
+
+hr {
+	width: 70%;
+	border-style: none;
 }
 
 @keyframes cathover {

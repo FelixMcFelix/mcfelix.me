@@ -75,13 +75,25 @@
 	text-align: center;
 }
 
-.navbar-body a::before {
+.navbar-body a::before, article :target::before {
 	content: ">";
 }
 
 nav a::before, nav a::after, a {
 	color: #d65f10;
 	border-color: #d65f10;
+}
+
+article :target::before {
+	content: ">";
+}
+
+article :target::after {
+	content: "<";
+}
+
+article :target::before, article :target::after {
+	color: #d65f10;
 }
 
 body {

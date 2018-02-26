@@ -41,7 +41,7 @@ It's very much in-line with the whole 'zero-cost abstraction' philosophy the dev
 Compiler error messages are a god-send.
 Not that I like having my work picked apart, but the clarity and pointedness of the messages themselves is so far above and beyond what other compiled languages really have to offer.
 Too often are the days when a relatively simple error in C++ (for instance) leads to pages upon pages of useless information spewing forth from some template code violation.
-It's *not* something I want to be spending the time to unpack, and Rust's compiler generally knows how to help you along the path to a working program---the borrow checker is notorious, after all!
+It's *not* something I want to be spending the time to unpack, and Rust's compiler generally knows how to help you along the path to a working program -- the borrow checker is notorious, after all!
 
 ---
 

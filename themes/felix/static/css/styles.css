@@ -111,6 +111,10 @@ div.post-split + p,
 	text-indent: 0em;
 }
 
+article .body {
+	font-size: 1.05em
+}
+
 html, button, input, select, textarea, .pure-g [class *= "pure-u"] {
 	font-family: "Alegreya", "Lora", Georgia, Times, "Times New Roman", serif;
 }

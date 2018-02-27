@@ -1,4 +1,4 @@
-+++ 
++++
 title = "Felyne Bot, and Initial Thoughts on Rust"
 date = 2018-02-26T12:06:53Z
 description = "A language I want to love."
@@ -51,7 +51,7 @@ It's *not* something I want to be spending the time to unpack, and Rust's compil
 
 One of the largest gripes I have is symptomatic of how many people may well have approached the language (i.e., as a curio): the selection of open source libraries and sys-wrappers is very much in its infancy.
 With core dependencies of useful libraries lying untouched, mysteriously broken and littered with `TODO` comments, it really shows.
-This 'curio' angle resurfaces when it comes to how forward-thinking wrapper writers might not be, such as `Decoder` state `struct`s for [Opus](https://github.com/SpaceManiac/opus-rs) mysteriously lacking the `Send` Trait despite being, well... structs.
+This 'curio' angle resurfaces when it comes to how forward-thinking wrapper writers might not be, such as `Decoder` state `struct`s for [Opus](https://github.com/SpaceManiac/opus-rs) mysteriously lacking the `Send` Trait despite being, well... `struct`s.
 
 I guess this ties into a 'momentum problem' of sorts: I, as a new contributor to a library, can't and don't want to fork and fix an abandoned dependency, push it as a new project to Cargo and then rally for a migration over to that.
 It ends up being easier to bang out code like:
@@ -62,7 +62,7 @@ It ends up being easier to bang out code like:
 struct SendDecoder(OpusDecoder);
 
 impl SendDecoder {
-    fn decode_float(...) -> OResult<usize> {
+    fn decode_float(...) -> OpusResult<usize> {
         let &mut SendDecoder(ref mut sd) = self;
         sd.decode_float(input, output, fec)
     }

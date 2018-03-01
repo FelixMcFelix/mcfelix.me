@@ -17,6 +17,7 @@ pygmentsCodeFences = true
   # Custom assets can be linked with their paths relative to static/
   custom_css = []
   custom_js  = []
+  hideReadingTime = false
 
 [social]
   github        = "FelixMcFelix"

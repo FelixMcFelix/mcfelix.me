@@ -18,6 +18,7 @@
 				{{ with .Description }}<h4 class="desc">{{ . }}</h4>{{ end }}
 			</a>
 			{{ partial "date" . }}
+			{{ partial "reading-time" . }}
 			{{ partial "categories" . }}
 			<div class="summary">{{ .Summary }}</div>
 			<div class="post-split"></div>

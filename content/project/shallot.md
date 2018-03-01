@@ -7,7 +7,7 @@ github = "https://github.com/FelixMcFelix/Shallot"
 categories = ["Networks", "University"]
 date = "2016-03-28"
 tags = ["JavaScript", "NodeJS"]
-
+hideReadingTime = true
 +++
 
 Shallot implements a basic decentralised onion routing scheme designed for use within browser applications, by using a modification of the *Chord* protocol as a backbone network and file-storage system.

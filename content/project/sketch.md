@@ -8,7 +8,7 @@ image = "projects/sketch.png"
 report = ""
 date = "2015-03-20"
 title = "Sketch"
-
+hideReadingTime = true
 +++
 
 The end result of a team project, Sketch is a simple Swift-inspired programming language for drawing graphics and animations.

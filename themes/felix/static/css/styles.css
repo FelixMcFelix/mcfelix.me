@@ -281,7 +281,11 @@ article.project:nth-child(odd) section {
 }
 
 .category-holder {
-	margin: 1em 0 0;
+	margin: 0.3em 0 0;
+}
+
+.reading-time + .category-holder {
+	margin: 0.7em 0 0;
 }
 
 h4.desc {
@@ -354,6 +358,10 @@ a.tag:not(:last-child)::after {
 }
 
 .tag-holder {
+	margin-top: 0.4em;
+}
+
+.post-split + .tag-holder {
 	margin-top: 1em;
 }
 

@@ -9,12 +9,15 @@
 			"@id":"{{ .Site.BaseURL }}"
 		},
 		"headline": "{{ .Title }} | {{ .Site.Params.titlefull }} {{ .Site.Params.titlesub}}",
+
+		{{ with .Params.image }}
 		"image": {
 			"@type": "ImageObject",
-			"url": "",
+			"url": "{{ $.Site.BaseURL }}images/{{ . }}",
 			"height": 700,
 			"width": 700
 		},
+		{{ end }}
 		"datePublished": "{{ .Date.Format "2006-01-02T15:04:05JST" }}",
 		"dateModified": "{{ .Date.Format "2006-01-02T15:04:05JST" }}",
 		"author": {
@@ -51,6 +54,7 @@
 		<h1>{{ .Title }}</h1>
 		{{ with .Description }}<h4 class="desc">{{ . }}</h4>{{ end }}
 		{{ partial "date" . }}
+		{{ partial "reading-time" . }}
 		{{ partial "tags" . }}
 		{{ partial "categories" . }}
 		<div class="post-split"></div>

@@ -8,4 +8,5 @@ github = ""
 link = ""
 report = ""
 image = ""
+hideReadingTime = true
 +++

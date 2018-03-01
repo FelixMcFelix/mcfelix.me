@@ -1,0 +1,5 @@
+{{ if not (or .Site.Params.hideReadingTime (and (isset .Params "hidereadingtime") .Params.hideReadingTime)) }}
+<aside class="reading-time">
+	<i>Reading time: ~{{ .ReadingTime }} minutes.</i>
+</aside>
+{{ end }}

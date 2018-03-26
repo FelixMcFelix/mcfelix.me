@@ -281,10 +281,6 @@ article.project:nth-child(odd) section {
 }
 
 .category-holder {
-	margin: 0.3em 0 0;
-}
-
-.reading-time + .category-holder {
 	margin: 0.7em 0 0;
 }
 

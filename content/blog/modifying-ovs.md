@@ -17,7 +17,10 @@ springboard for later development and testing -- [mininet](http://mininet.org/)
 fit. Part of this requires a new feature to be hacked on top of OpenFlow:
 **probabilistic packet dropping**. I've written this short
 walkthrough/tutorial on the process for the benefit of anyone looking to make
-their own modifications.
+their own modifications. A full repository is included [here]
+(https://github.com/FelixMcFelix/ovs/tree/ppd).
+
+**[EDIT 2018-05-31]:** *Updated for OVS Post-v2.9.0.*
 
 <!--more-->
 
@@ -26,7 +29,7 @@ Mininet relies on virtual ethernet links and network namespaces to allow
 simulated communication between switches and nodes: switches use Open vSwitch
 (OVS) and are configured with the OpenFlow protocol. As-is, the OpenFlow
 protocol offers *meters* which are capable of rate-limiting traffic, but Open
-vSwitch doesn't support these in its kernel datapath. To do what I need, I *have
+vSwitch doesn't support these in its kernel datapath. To do what I need, I *have 
 to* modify OVS (which is a little less than ideal)!
 
 Thankfully, other kind folks have attempted and documented their process
@@ -116,7 +119,7 @@ enum ovs_action_attr {
 	* the equals is thus ABSOLUTELY NECESSARY
 	*/
 
-	OVS_ACTION_ATTR_PROBDROP=22, /* unit32_t, prob in [0,2^32 -1] */
+	OVS_ACTION_ATTR_PROBDROP = 23, /* unit32_t, prob in [0,2^32 -1] */
 
 	__OVS_ACTION_ATTR_MAX, /* Nothing past this will be accepted
 							* from userspace. */
@@ -344,6 +347,24 @@ ofpact_is_set_or_move_action(const struct ofpact *a)
 
 /* ... */
 
+/*	Modify this function to enable use of probdrop within a WRITE_ACTIONS message.
+	As-is, you won't be able to see WRITE_ACTIONS actions through e.g. `dump-flows`,
+	so use APPLY_ACTIONS if that's important to you.
+
+	OVS provides both, even though the latter is technically optional. */
+void
+ofpacts_execute_action_set(struct ofpbuf *action_list, const struct ofpbuf *action_set)
+{
+	/* The OpenFlow spec "Action Set" section specifies this order. */
+	/* ... */
+	ofpacts_copy_last(action_list, action_set, OFPACT_SET_QUEUE);
+	ofpacts_copy_last(action_list, action_set, OFPACT_PROBDROP);
+
+	/* ... */
+}
+
+/* ... */
+
 static bool
 ofpact_is_allowed_in_actions_set(const struct ofpact *a)
 {
@@ -450,23 +471,19 @@ parse_prob(char *arg, struct ofpbuf *ofpacts)
 e.g. ovs-ofctl add-flow ... actions=probdrop:3000000000,output:"s2-eth0"
 */
 static char * OVS_WARN_UNUSED_RESULT
-parse_PROBDROP(char *arg,
-					const struct ofputil_port_map *port_map OVS_UNUSED,
-					struct ofpbuf *ofpacts,
-					enum ofputil_protocol *usable_protocols OVS_UNUSED)
+parse_PROBDROP(char *arg, const struct ofpact_parse_params *pp)
 {
-	return parse_prob(arg, ofpacts);
+	return parse_prob(arg, pp->ofpacts);
 }
 
 /* Used when printing info to console. */
 static void
 format_PROBDROP(const struct ofpact_probdrop *a,
-					const struct ofputil_port_map *port_map OVS_UNUSED,
-					struct ds *s)
+				const struct ofpact_format_params *fp)
 {
 	/* Feel free to use e.g. colors.param,
 	colors.end around parameter names */
-	ds_put_format(s, "probdrop:%"PRIu32, a->prob);
+	ds_put_format(fp->s, "probdrop:%"PRIu32, a->prob);
 }
 ```
 
@@ -672,6 +689,27 @@ sh ovs-ofctl add-flow s1 \
 h1 ping h2
 ```
 
+Alternatively, you can build control messages yourself (to manually send over
+sockets) using a library like [twink](https://github.com/hkwi/twink) for
+python:
+```python
+import twink.ofp5 as ofp
+import twink.ofp5.build as ofpb
+import twink.ofp5.parse as ofpp
+
+flow_pdrop_msg = ofpb.ofp_flow_mod(
+	None, 0, 0, 0, ofp.OFPFC_ADD,
+	0, 0, 1, None, None, None, 0, 1,
+	ofpb.ofp_match(None, None, None),
+	ofpb.ofp_instruction_actions(ofp.OFPIT_WRITE_ACTIONS, None, [
+		# 29 is the number I picked for Pdrop.
+		# 0xffffffff allows all packets through.
+		ofpb._pack("HHI", 29, 8, 0xffffffff),
+		ofpb.ofp_action_output(None, 16, 1, 65535)
+	])
+)
+```
+
 ## Debugging
 
 All the errors that are being thrown at you by `--enable-Werror` are first
@@ -679,7 +717,7 @@ priority. It's easy to miss something in a codebase this large.
 
 For the love of god, befriend `gdb`. If you think your issues originate in the
 userland code, run `ps -e | grep ovs-vswitchd` to get the pid, hook in with
-`gdb ovs-vswitchd <pid>` and have fun.
+`sudo gdb ovs-vswitchd <pid>` and have fun.
 
 Kernel problems are a lot more nefarious, and not something you really want to
 tussle with for too long. If you're not used to this (as I wasn't), you have

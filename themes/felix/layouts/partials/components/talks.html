@@ -6,7 +6,11 @@
 {{ range first 5 ( where $.Site.RegularPages "Type" "talk" ) }}
 	<li>
 	{{ $pub := . }}
-	<strong>{{ .Title }}</strong>:
+	<strong>{{ .Title }}</strong>{{ with .Params.slidesUrl }}<a href="{{ . }}"
+		alt="Slides"
+		title="Slides">
+		<i class="fas fa-archive"></i>
+	</a> {{ end }}:
 	<em>
 		{{ .Date.Format "2 January 2006" }},
 		{{ with $pub.Params.venuelink }} <a href="{{ . }}"> {{ end }}

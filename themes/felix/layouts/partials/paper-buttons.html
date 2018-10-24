@@ -1,4 +1,4 @@
-{{ if .Params.urls }}
+{{ if (or .Params.urls .Params.slidesUrl) }}
 <br />
 {{ range .Params.urls }}
 <a href="{{ index . 1 }}" class="paper-btn">{{ index . 0 }}</a>

@@ -1,9 +1,8 @@
 +++
 subtitle = ""
 
-component = "publications"
+component = "talks"
 
 # Order that this section will appear in.
-weight = 4
-full = 1
+weight = 3
 +++

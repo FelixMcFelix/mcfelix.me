@@ -11,7 +11,7 @@
 	{{ with .Params.authors }}
 		<em>{{ delimit . ", " | markdownify }}</em>.{{ end }}
 	{{ with .Params.publication_short }}
-		<br />{{ . | markdownify }}{{ if $pub.Params.to_appear }}, to appear.{{ else }}.{{end}}
+		{{ . | markdownify }}{{ if $pub.Params.to_appear }}, to appear.{{ else }}.{{end}}
 	{{ end }}
 	{{ partial "paper-buttons" . }}
 	</li>

@@ -4,11 +4,11 @@
 {{ partial "navbar" . }}
 
 <!-- Widgets -->
-<section class="home">
+<section class="home pure-g">
 	{{ range $index, $page := where .Data.Pages "Type" "home" }}
 		{{ $params := dict "root" $ "page" $page }}
 		{{ $widget := printf "components/%s.html" ( or $page.Params.component "custom" ) }}
-		<section id="{{ $page.File.BaseFileName }}" class="home-section">
+		<section id="{{ $page.File.BaseFileName }}" class="home-section pure-u-1 {{ if .Params.full }} pure-u-lg-1 {{ else }} pure-u-lg-1-2 half-sec {{ end }}">
 			{{ partial $widget $params }}
 		</section>
 	{{ end }}

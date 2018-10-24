@@ -3,7 +3,8 @@ date = "2016-12-30T16:55:48Z"
 title = "home"
 
 component = "about"
-weight = 0
+full = 1
+weight = 1
 avatardesc = "Photograph of Kyle Simpson at Loch an Eilein, Aviemore."
 
 +++

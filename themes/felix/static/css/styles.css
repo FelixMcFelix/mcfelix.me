@@ -152,11 +152,23 @@ section.social {
 	border-radius: 100%;
 }
 
-section#publications {
+section.home-section {
 	/*#9c907f*/
 	/*#d4c0a6*/
-	border-left: #d4c0a6 5px solid;
-    padding: 0 1em;
+	/*border-left: #d4c0a6 5px solid;*/
+	box-shadow: 5px 0px 0px 0px #d4c0a6 inset;
+	padding: 0 1em;
+
+	box-sizing: border-box;
+}
+
+section#about {
+	box-shadow: none;
+	padding: 0;
+}
+
+section.half-sec {
+	margin-bottom: 0.5em;
 }
 
 footer {

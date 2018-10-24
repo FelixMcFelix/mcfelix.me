@@ -1,0 +1,23 @@
+{{ $ := .root }}
+{{ $page := .page }}
+
+<h2>Recent Talks</h2>
+<ul>
+{{ range first 5 ( where $.Site.RegularPages "Type" "talk" ) }}
+	<li>
+	{{ $pub := . }}
+	<strong>{{ .Title }}</strong>:
+	<em>
+		{{ .Date.Format "2 January 2006" }},
+		{{ with $pub.Params.venuelink }} <a href="{{ . }}"> {{ end }}
+		{{ .Params.venue }}.
+		{{ with $pub.Params.venuelink }} </a> {{ end }}
+	</em>
+	{{ partial "paper-buttons" . }}
+	</li>
+{{ end }}
+</ul>
+
+{{ if ( gt ( len ( where $.Site.RegularPages "Type" "talk" ) ) 5 ) }}
+<a href="{{ $.Site.BaseURL }}/talk">More...</a>
+{{ end }}

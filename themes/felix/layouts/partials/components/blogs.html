@@ -1,0 +1,20 @@
+{{ $ := .root }}
+{{ $page := .page }}
+
+<h2>Blog</h2>
+<ul>
+{{ range first 5 ( where $.Site.RegularPages "Type" "blog" ) }}
+	<li>
+	{{ $pub := . }}
+	<a href="{{ .Permalink }} ">
+		<strong>{{ .Title }}</strong></a>:
+		<em>{{ .Date.Format "2 January 2006" }}</em>.
+	
+	{{ partial "paper-buttons" . }}
+	</li>
+{{ end }}
+</ul>
+
+{{ if ( gt ( len ( where $.Site.RegularPages "Type" "blog" ) ) 5 ) }}
+<a href="{{ $.Site.BaseURL }}/blog">More...</a>
+{{ end }}

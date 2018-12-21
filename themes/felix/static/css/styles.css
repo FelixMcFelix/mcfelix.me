@@ -384,6 +384,17 @@ a.rss {
 	font-size: 0.7em;
 }
 
+/* Dirty hack for ORCiD */
+section#about a[href*="//orcid.org"] {
+	background: url(/images/ORCIDiD_iconvector.svg) no-repeat;
+	display: inline-block;
+	width: 0.8em;
+	height: 0.8em;
+	/*margin-left: 0.1em;
+	margin-right: 0.1em;*/
+	line-height: 1;
+}
+
 #notfound {
 	text-align: center;
 }

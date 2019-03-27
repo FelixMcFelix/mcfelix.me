@@ -43,6 +43,9 @@ The world of Vana'diel today is, sadly, not the one I left.
 
 What could other worlds learn?
 
+How does this relate to i.e., Eureka? They offer a way to make meaningful progression in other, more solo games like ffxiv while talking to/hanging out with people on voice.
+Big diff: modern mmo content leaves no room for discussion since the mechanics are so tight, focussed  and demanding. Eureka (and FFXI) fill a niche in this regard.
+
 
 ---
 

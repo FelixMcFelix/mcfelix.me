@@ -20,7 +20,7 @@ walkthrough/tutorial on the process for the benefit of anyone looking to make
 their own modifications. A full repository is included [here]
 (https://github.com/FelixMcFelix/ovs/tree/ppd).
 
-**[EDIT 2018-07-04]:** *Updated for [OVS revision e7cd8cf](https://github.com/openvswitch/ovs/commit/e7cd8cfc5af02397149ef0872c172bffcdcb4e98).*
+**[EDIT 2019-03-27]:** *Updated for [OVS revision 8e73833](https://github.com/openvswitch/ovs/commit/8e738337a2c25c3d6ede2829d6ffd9af6bcd36a5).*
 
 <!--more-->
 
@@ -92,8 +92,11 @@ avoid floats.
  *
  * Used for OFPAT_PROBDROP */
 struct ofpact_probdrop {
-	struct ofpact ofpact;
-	uint32_t prob;           /* Uint probability, "covers" 0->1 range. */
+	OFPACT_PADDED_MEMBERS(
+		struct ofpact ofpact;
+		uint32_t prob;           /* Uint probability, "covers" 0->1 range. */
+	);
+	uint8_t data[];
 };
 ```
 
@@ -350,20 +353,6 @@ ovs_instruction_type_from_ofpact_type(enum ofpact_type type)
 
 /* ... */
 
-static enum ofperr
-ofpact_check__( /* ... */ )
-{
-	/* ... */
-	switch (a->type) {
-	/* ... */
-	case OFPACT_PROBDROP:
-		return 0;
-		/* My method needs no checking. Probably. */
-	}
-}
-
-/* ... */
-
 static bool
 ofpact_outputs_to_port(const struct ofpact *ofpact, ofp_port_t port)
 {
@@ -488,6 +477,16 @@ format_PROBDROP(const struct ofpact_probdrop *a,
 	/* Feel free to use e.g. colors.param,
 	colors.end around parameter names */
 	ds_put_format(fp->s, "probdrop:%"PRIu32, a->prob);
+}
+
+/* ... */
+
+static enum ofperr
+check_PROBDROP(const struct ofpact_probdrop *a OVS_UNUSED,
+				const struct ofpact_check_params *cp OVS_UNUSED)
+{
+	/* My method needs no checking. Probably. */
+	return 0;
 }
 ```
 

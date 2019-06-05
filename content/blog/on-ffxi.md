@@ -24,7 +24,7 @@ The tale spun there was not one of triumph.
 In control of a brave young Tarutaru red mage named Chuefue, I never made it past level 13 despite my best solo efforts, or even our group effort.
 
 This failure came from my own misunderstanding of what the game *was*.
-The central philopsophy of Vana'diel was, for the longest time, that players could not succeed on their own.
+The central philosophy of Vana'diel was, for the longest time, that players could not succeed on their own.
 This suffused every design decision the game was built upon: the world was expansive and difficult to traverse, with real-time transport like ferries featuring heavily (alongside paid teleports offered by higher-level white mages); monsters at your own level became more and more lethal as you progressed, and death would punish players by costing experience and levels.
 I'd not seen much more than the town of Windurst, having taken the lengthy and dangerous journey to Bastok only once (often anxiously waiting for monsters to pass by, or taking pains to evade them).
 It took perhaps dozens of attempts to escape from the starting town, to venture forth, to see the world, and to find some of the famed grinding spots.
@@ -64,7 +64,7 @@ The restrictions on movement make the map feel more meaningful in a way that fli
 Getting from A-to-B remains a pulse-pounding experience, as bosses and quest objectives lie beyond wave upon wave of creatures that can and will obliterate you.
 At least, this was the case until recent changes allowed mass taxiing of low-level players.
 Although I consider the FFXV crossover a significant misstep in this regard, the way that people make use of it is emblematic of an unstructured but omnipresent air of kindness and shared burden that fills the zone.
-I've seen, without prompt or coordination, players form revive chains to sneak one another past impemetrable walls of dangerous monsters.
+I've seen, without prompt or coordination, players form revive chains to sneak one another past impenetrable walls of dangerous monsters.
 
 Enjoying it all requires you to be clear about what you're getting into, and understand *why* Yoshi-P and the team arrived at the design they did.
 Don't get me wrong, I wish beyond all words that the grind for the weapon wasn't quite as intense, because I think the forced repetition is what separates the player from being able to reflect on (and enjoy) what's before them.

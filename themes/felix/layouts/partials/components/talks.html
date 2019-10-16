@@ -1,7 +1,7 @@
 {{ $ := .root }}
 {{ $page := .page }}
 
-<h2>Recent Talks</h2>
+<h2>Recent Talks/Posters</h2>
 <ul>
 {{ range first 5 ( where $.Site.RegularPages "Type" "talk" ) }}
 	<li>

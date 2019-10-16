@@ -124,7 +124,8 @@ div.post-split + p,
 }
 
 article .body {
-	font-size: 1.05em
+	/*font-size: 1.05em*/
+	font-size: 15pt;
 }
 
 html, button, input, select, textarea, .pure-g [class *= "pure-u"] {

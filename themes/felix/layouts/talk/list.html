@@ -15,7 +15,7 @@
 {{ range .Pages }}
 	<li>
 	{{ $pub := . }}
-	<strong>{{ .Title }}</strong>:<br />
+	<strong>{{ with .Params.slidesUrl }}<a href="{{ . }}">{{ end }}{{ .Title }}{{ with .Params.slidesUrl }}</a>{{ end }}</strong>:<br />
 	<em>
 		{{ .Date.Format "2 January" }},
 		{{ with $pub.Params.venuelink }} <a href="{{ . }}"> {{ end }}

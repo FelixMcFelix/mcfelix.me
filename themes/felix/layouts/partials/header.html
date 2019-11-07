@@ -10,7 +10,7 @@
 		<link rel="apple-touch-icon-precomposed" href="{{ .Site.BaseURL }}images/fav/favicon-152.png">
 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		{{ .Hugo.Generator }}
+		{{ hugo.Generator }}
 
 		<!-- WebFonts -->
 		<link href="https://fonts.googleapis.com/css?family=Alegreya:400,400i,700,700i" rel="stylesheet">
@@ -28,7 +28,7 @@
 		<link rel="stylesheet" href="{{ .Site.BaseURL }}css/styles.css">
 		<link rel="stylesheet" href="{{ .Site.BaseURL }}css/custom.css">
 
-		{{ if eq .URL "/" }}
+		{{ if eq .RelPermalink "/" }}
 		<title>{{ .Title }}</title>
 		<meta property='og:title' content="{{ .Title }}">
 		<meta property="og:type" content="website">
@@ -43,7 +43,7 @@
 		{{ with .Params.image }}<meta property="og:image" content="{{ $.Site.BaseURL }}images/{{ . }}">{{ end }}
 		<meta name="author" content="{{ .Site.Params.author }}" />
 
-		{{ if .RSSLink }}
-			<link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Title }}" />
-			<link href="{{ .RSSLink }}" rel="feed" type="application/rss+xml" title="{{ .Title }}" />
+		{{ with .OutputFormats.Get "RSS" }}
+			<link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Title }}" />
+			<link href="{{ .RelPermalink }}" rel="feed" type="application/rss+xml" title="{{ $.Title }}" />
 		{{ end }}

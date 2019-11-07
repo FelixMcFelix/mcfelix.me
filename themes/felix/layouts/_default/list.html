@@ -12,8 +12,13 @@
 {{ range (.Paginate .Data.Pages).Pages }}
 <article>
 	<section>
+			{{ $imgUrl := "/images/default.jpg" }}
+			{{ with .Resources.GetMatch "header" }}
+				{{ $newImg := .Fill "600x120 Center q90 jpg" }}
+				{{ $imgUrl = $newImg.RelPermalink }}
+			{{ end }}
 			<a href="{{ .Permalink }}">
-				<div class="article-image" style="background-image: url({{ $.Site.BaseURL }}images/{{ with .Params.image }}{{ . }}{{ else }}default.jpg{{ end }});"></div>
+				<div class="article-image" style="background-image: url('{{ $imgUrl }}');"></div>
 				<h2 class="title">{{ .Title }}</h2>
 				{{ with .Description }}<h4 class="desc">{{ . }}</h4>{{ end }}
 			</a>

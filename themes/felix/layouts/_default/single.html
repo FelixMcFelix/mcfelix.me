@@ -1,5 +1,13 @@
 {{ partial "header" . }}
 
+{{ $imgUrl := "/images/default.jpg" }}
+{{ $imgTrueUrl := "/images/default.jpg" }}
+{{ with .Resources.GetMatch "header" }}
+	{{ $newImg := .Resize "600x png q100" }}
+	{{ $imgUrl = $newImg.RelPermalink }}
+	{{ $imgTrueUrl = .RelPermalink }}
+{{ end }}
+
 <script type="application/ld+json">
 	{
 		"@context": "http://schema.org",
@@ -10,14 +18,21 @@
 		},
 		"headline": "{{ .Title }} | {{ .Site.Params.titlefull }} {{ .Site.Params.titlesub}}",
 
-		{{ with .Params.image }}
-		"image": {
-			"@type": "ImageObject",
-			"url": "{{ $.Site.BaseURL }}images/{{ . }}",
-			"height": 700,
-			"width": 700
-		},
+		{{ with .Resources.ByType "image" }}
+		{{ $finalEntry := sub (len .) 1 }}
+		"image": [
+			{{ range $index, $element := . }}
+			{
+				"@type": "ImageObject",
+				"url": "{{ $element.Permalink }}",
+				"height": 700,
+				"width": 700,
+				"caption": "{{ with $element.Title }}{{ . }}{{ else }}Untitled.{{ end }}"
+			}{{ if ne $finalEntry $index }},{{ end }}
+			{{ end }}
+		]
 		{{ end }}
+
 		"datePublished": "{{ .Date.Format "2006-01-02T15:04:05JST" }}",
 		"dateModified": "{{ .Date.Format "2006-01-02T15:04:05JST" }}",
 		"author": {
@@ -48,7 +63,7 @@
 {{ partial "navbar" . }}
 
 <article class="single">
-	<img class="pure-img" src="{{ $.Site.BaseURL }}images/{{ with .Params.image }}{{ . }}{{ else }}default.jpg{{ end }}"></img>
+	<a href="{{ $imgTrueUrl }}" ><img class="pure-img" style="width: 100%" src="{{ $imgUrl }}"></img></a>
 
 	<div class="body">
 		<h1>{{ .Title }}</h1>

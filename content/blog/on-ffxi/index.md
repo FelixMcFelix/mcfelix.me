@@ -2,9 +2,13 @@
 title = "Thoughts on Vana'diel"
 date = 2019-05-31T13:29:13+01:00
 description = "Thoughts on a world I've long left."
-image = "blog/AmanoFF11.jpg"
 tags = ["Final Fantasy", "Final Fantasy XI", "Final Fantasy XIV", "Eureka", "MMOs"]
 categories = ["Gaming", "Opinions"]
+
+[[ resources ]]
+  name = "header"
+  src = "images/AmanoFF11.jpg"
+  title = "FFXI: Rise of the Zilart artwork, by Yoshitaka Amano."
 +++
 
 It's strange, I think, how a sense of nostalgia for a virtual world (or point in time) arises from where we least expect it.

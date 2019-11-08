@@ -14,7 +14,7 @@
 	<section>
 			{{ $imgUrl := "/images/default.jpg" }}
 			{{ with .Resources.GetMatch "header" }}
-				{{ $newImg := .Fill "600x120 Center q90 jpg" }}
+				{{ $newImg := .Fill "650x120 Center q90 jpg" }}
 				{{ $imgUrl = $newImg.RelPermalink }}
 			{{ end }}
 			<a href="{{ .Permalink }}">

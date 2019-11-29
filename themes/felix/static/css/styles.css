@@ -391,6 +391,9 @@ section#about a[href*="//orcid.org"] {
 	display: inline-block;
 	width: 0.8em;
 	height: 0.8em;
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
 	/*margin-left: 0.1em;
 	margin-right: 0.1em;*/
 	line-height: 1;

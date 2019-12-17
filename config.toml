@@ -45,7 +45,7 @@ pygmentsCodeFences = true
   weight = 200
   url = "project/"
 [[menu.main]]
-  name = "resumé"
+  name = "résumé"
   identifier = "resume"
   weight = 300
   url = "Vitae-KSimpson.pdf"

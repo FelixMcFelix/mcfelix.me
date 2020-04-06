@@ -44,6 +44,7 @@ selected = false
 # Links (optional)
 urls = [
 	["Author-final PDF", "/docs/papers/cp2017-max-weight-clique-instances-paper.pdf"],
+	["DOI", "https://doi.org/10.1007/978-3-319-66158-2_14"],
 	["Benchmark instances", "https://github.com/jamestrimble/max-weight-clique-instances"]
 ]
 

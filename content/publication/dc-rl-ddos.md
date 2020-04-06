@@ -3,7 +3,7 @@
 # Courtesy of https://github.com/gcushen/hugo-academic/
 
 title = "Per-Host DDoS Mitigation by Direct-Control Reinforcement Learning"
-date = 2019-12-13T15:58:29Z
+date = 2020-03-01T15:58:29Z
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
 authors = ["Kyle A. Simpson", "Simon Rogers", "Dimitrios P. Pezaros"]
@@ -23,7 +23,7 @@ pub_type = "2"
 # Publication name and optional abbreviated version.
 publication = "IEEE Transactions on Network and Service Management Special Issue, 'Cybersecurity Techniques for Managing Networked Systems'"
 publication_short = "IEEE TNSM, March 2020"
-to_appear = true
+to_appear = false
 
 # Abstract and optional shortened version.
 abstract = ""
@@ -39,11 +39,12 @@ highlight = true
 image_preview = ""
 
 # Is this a selected publication? (true/false)
-selected = false
+selected = true
 
 # Links (optional)
 urls = [
 	["Author-final PDF", "/docs/papers/tnsm-si-2020-rln-dc-ddos-paper.pdf"],
+	["DOI", "https://doi.org/10.1109/TNSM.2019.2960202"],
 	["Source code", "https://github.com/FelixMcFelix/rln-dc-ddos-paper"]
 ]
 

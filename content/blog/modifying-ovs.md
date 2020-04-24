@@ -8,8 +8,7 @@ categories = ["Development", "Tutorial", "Networks"]
 draft = false
 +++
 
-For a project I've been working on (reimplementing some [past work]
-(https://doi.org/10.1016/j.engappai.2015.01.013)), being able to easily enable
+For a project I've been working on (reimplementing some [past work](https://doi.org/10.1016/j.engappai.2015.01.013)), being able to easily enable
 pushback at various points in the network is fairly important.
 For this, I wanted to try something I'd both learn from and be able to use as a
 springboard for later development and testing -- [mininet](http://mininet.org/)
@@ -17,8 +16,7 @@ springboard for later development and testing -- [mininet](http://mininet.org/)
 fit. Part of this requires a new feature to be hacked on top of OpenFlow:
 **probabilistic packet dropping**. I've written this short
 walkthrough/tutorial on the process for the benefit of anyone looking to make
-their own modifications. A full repository is included [here]
-(https://github.com/FelixMcFelix/ovs/tree/ppd).
+their own modifications. A full repository is included [here](https://github.com/FelixMcFelix/ovs/tree/ppd).
 
 **[EDIT 2019-03-27]:** *Updated for [OVS revision 8e73833](https://github.com/openvswitch/ovs/commit/8e738337a2c25c3d6ede2829d6ffd9af6bcd36a5).*
 
@@ -33,8 +31,7 @@ vSwitch doesn't support these in its kernel datapath. To do what I need, I *have
 to* modify OVS (which is a little less than ideal)!
 
 Thankfully, other kind folks have attempted and documented their process
-(sort-of). While this [this mailing list entry]
-(https://mail.openvswitch.org/pipermail/ovs-discuss/2015-May/037560.html)) was
+(sort-of). While this [this mailing list entry](https://mail.openvswitch.org/pipermail/ovs-discuss/2015-May/037560.html)) was
 immensely helpful, it doesn't really get around to explaining what the necessary
 changes *mean* or give concrete examples for some of the more ambiguous areas.
 The official advice is less helpful still: [compile with --enable-Werror and
@@ -42,13 +39,11 @@ see what breaks](http://docs.openvswitch.org/en/latest/faq/contributing/).
 Hopefully, this short tutorial will be a helpful supplement!
 
 ## Preliminaries
-On your development machine, follow the [official guide]
-(http://docs.openvswitch.org/en/latest/intro/install/general/) on installing
+On your development machine, follow the [official guide](http://docs.openvswitch.org/en/latest/intro/install/general/) on installing
 OVS *from source*. Any dependencies and build tools needed are all listed,
 and I strongly recommend configuring with `--enable-Werror`.
 
-If you're running mininet from the official VM, [this short guide]
-(https://github.com/mininet/mininet/wiki/Installing-new-version-of-Open-vSwitch)
+If you're running mininet from the official VM, [this short guide](https://github.com/mininet/mininet/wiki/Installing-new-version-of-Open-vSwitch)
 will walk you through uninstalling the default version of OVS and ensuring that
 your new kernel modules will be preferred.
 

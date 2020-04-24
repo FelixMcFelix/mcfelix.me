@@ -123,7 +123,7 @@ div.post-split + p,
 	text-indent: 0em;
 }
 
-article .body {
+article {
 	/*font-size: 1.05em*/
 	font-size: 15pt;
 }
@@ -281,7 +281,7 @@ article.project:nth-child(odd) section {
 }
 
 .home-about em {
-	color: #3cb5bf/*#d65f10*/;
+	color: #0685ac;
 }
 
 .paging {

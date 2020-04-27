@@ -186,6 +186,11 @@ a {
 	font-weight: bold;
 }
 
+code {
+	tab-size: 4;
+	-moz-tab-size: 4;
+}
+
 .paper-btn {
 	border: 1px solid;
 	border-radius: 0.25em;

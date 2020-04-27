@@ -50,3 +50,7 @@ pygmentsCodeFences = true
   weight = 300
   url = "Vitae-KSimpson.pdf"
   pre = "yup"
+
+[markup]
+  [markup.highlight]
+    tabWidth = 4

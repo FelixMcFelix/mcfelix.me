@@ -2,10 +2,12 @@
 
 {{ $imgUrl := "/images/default.jpg" }}
 {{ $imgTrueUrl := "/images/default.jpg" }}
+{{ $imgDesc := ""}}
 {{ with .Resources.GetMatch "header" }}
 	{{ $newImg := .Resize "600x png q100" }}
 	{{ $imgUrl = $newImg.RelPermalink }}
 	{{ $imgTrueUrl = .RelPermalink }}
+	{{ $imgDesc = .Title }}
 {{ end }}
 
 <script type="application/ld+json">
@@ -63,7 +65,7 @@
 {{ partial "navbar" . }}
 
 <article class="single">
-	<a href="{{ $imgTrueUrl }}" ><img class="pure-img" style="width: 100%" src="{{ $imgUrl }}"></img></a>
+	<a href="{{ $imgTrueUrl }}" ><img class="pure-img" style="width: 100%" src="{{ $imgUrl }}" alt="{{ $imgDesc }}"></img></a>
 
 	<div class="body">
 		<h1>{{ .Title }}</h1>

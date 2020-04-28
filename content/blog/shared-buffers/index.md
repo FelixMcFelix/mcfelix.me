@@ -42,19 +42,24 @@ Reading from this store can be condensed down to the following algorithm pseudoc
 # main method: reads bytes from stream into buf transparently
 # from pos, where reads last came from location.
 def read(pos, location, buf):
-	if finalised:
+	atomic(stream_done = finalised, acquire)
+
+	if stream_done:
 		promote handle location to use backing store
 	
-	if finalised or read is in stored region:
-		read_amt = min(buf.len, backing_len - pos)
+	atomic(available = backing_len, acquire)
+	if stream_done or read is in stored region:
+		read_amt = min(buf.len, available - pos)
 		local_read(pos, location, buf, read_amt)
 	else:
 		read = 0
-		while read != buf.len or finalised
-				and backing_len == pos + read:
+		while read != buf.len or (stream_done
+				and available == pos + read):
 			# Note: any thread may change backing_len
 			# at any time.
-			space = backing_len - pos - read
+			atomic(available = backing_len, acquire)
+
+			space = available - pos - read
 
 			if space == 0:
 				acquire lock
@@ -73,6 +78,8 @@ def read(pos, location, buf):
 			if space > 0:
 				local_read(pos + read, location,
 					buf[read..], space)
+
+			atomic(stream_done = finalised, acquire)
 
 # move some bytes into the target buffer, either
 # from the rope or single store
@@ -97,14 +104,14 @@ def fill_from_source(to_add):
 
 			# allow other streams to access these bytes
 			# without lock
-			backing_len += amount of bytes read
+			atomic(backing_len += amount of bytes read, release)
 
 	# finalisation
 	if stream is done:
 		allocate large buffer of size backing_len
 		for el in rope:
 			copy el into buffer[el.start_pos..]
-		self.finalised = true
+		atomic(finalised = true, release)
 
 ```
 
@@ -164,8 +171,8 @@ Since this has an O(n) lookup cost, once the underlying stream finishes all data
 
 ```rust
 struct RawStore {
-	len: usize,
-	finalised: bool,
+	len: AtomicUsize,
+	finalised: AtomicBool,
 
 	backing_store: Option<Vec<u8>,
 	rope: Option<Arc<LinkedList<Chunk>>>,
@@ -239,6 +246,16 @@ When new bytes are being stored in the tail element of the list, the `Vec` is re
 As `len` is incremented after the buffer shrinks to its true size, no invalid bytes may be accessed, so the tail element's length will never decrease below the value it had when `len` was last observed.
 However, the amount of bytes from `pos` that a handle wishes to read is computed using `len` -- while more bytes or chunks could have been stored in the interim, accesses to existing data aren't invalidated.
 
+### Atomic control of length
+On standard x86-64 systems, we can be certain that size-aligned writes/reads of primitive data are bound to be atomic.
+However, this cannot be guaranteed on all classes of CPU.
+Furthermore, the compiler and CPU are both capable of heavily reordering the code we write to the point that safety is violated: [the nomicon runs through this in detail](https://doc.rust-lang.org/nomicon/atomics.html).
+Given the correctness of this algorithm relies upon stored length being updated *only after new data are written*, we need to apply atomics here to inform the compiler and CPU that this order must be respected.
+In the initial algorithm, we store `backing_len` using `Ordering::Release` to ensure that no writes (*i.e.*, to the rope) are moved beyond setting `backing_len`, and read `backing_len` using `Ordering::Acquire` to ensure that data reads only occur after a safe length value is read (thanks, /u/usinglinux and /u/matthieum).
+
+The same semantics must be applied to `finalised`.
+Although `std::mem::sizeof<bool>()` is defined as 1-byte, and so is always aligned on all platforms (with writes which cannot be subdivided), writes to the contiguous store must occur before the cache is finalised.
+The same orderings for loads/stores are used as above.
 
 ## Further improvements
 There are some additional changes and modifications which can be made depending on the use case, or for blanket performance improvements.
@@ -258,3 +275,6 @@ Thanks for reading!
 Hopefully, this has given you some useful insight into solving this particular concurrent buffering problem and how we're solving it.
 I'm unsure whether the above has been documented elsewhere: if you know, please feel free to [contact me](mailto:kyleandrew.simpson@gmail.com).
 Likewise, if there corrections to be made feel free to request any changes on [GitHub](https://github.com/felixmcfelix/mcfelix.me).
+
+EDIT: Following [the discussion on Reddit](https://www.reddit.com/r/rust/comments/g8qgkj/almost_lockless_stream_buffering/), /u/usinglinux and /u/matthieum's advice on atomics around the backing length has been included.
+/u/matthiuem contributed [an excellent single-writer lockless approach](https://www.reddit.com/r/rust/comments/g8qgkj/almost_lockless_stream_buffering/foq8twl/).

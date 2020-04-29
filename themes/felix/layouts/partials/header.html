@@ -40,7 +40,9 @@
 
 		<meta property="og:url" content="{{ .Permalink }}">
 		{{ with .Description }}<meta name="description" content="{{ . }}">{{ end }}
-		{{ with .Params.image }}<meta property="og:image" content="{{ $.Site.BaseURL }}images/{{ . }}">{{ end }}
+		{{ with .Resources.GetMatch "header" }}
+			<meta property="og:image" content="{{ $.Site.BaseURL }}{{ .RelPermalink }}">
+		{{ end }}
 		<meta name="author" content="{{ .Site.Params.author }}" />
 
 		{{ with .OutputFormats.Get "RSS" }}

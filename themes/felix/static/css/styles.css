@@ -1,5 +1,5 @@
 .navbar {
-	background-color: #1f1c18;/*#1d150c;*/
+	background-color: #1f1c18;
 	color: #ffffff;
 	font-size: 1.33em;
 }
@@ -7,7 +7,7 @@
 .navbar a {
 	color: #ffffff;
 	text-decoration: none;
-	font-weight: /*bold*/normal;
+	font-weight: normal;
 }
 
 @keyframes navhover {
@@ -126,10 +126,6 @@ div.post-split + p,
 article {
 	/*font-size: 1.05em*/
 	font-size: 15pt;
-}
-
-html, button, input, select, textarea, .pure-g [class *= "pure-u"] {
-	font-family: "Alegreya", "Lora", Georgia, Times, "Times New Roman", serif;
 }
 
 section.social {
@@ -415,74 +411,4 @@ code {
 
 .highlight pre {
 	padding: 0.2em;
-}
-
-/*
-* iPhone 6 starting res
-* Only want padding in this band of device widths, screw the iPhone 5/SE/Whatever.
-*/
-@media (min-width: 23em) {
-	.home-about {
-		padding: 0 1em;
-	}
-}
-
-/*med devices*/
-@media (min-width: 48em) {
-	.navbar {
-		position: fixed;
-		top: 0;
-		bottom: 0;
-		max-width: 16em;
-	}
-
-	.navbar-split {
-		margin: 1em auto;
-	}
-
-	.content {
-		margin-left: 25%;
-	}
-
-	.content > div {
-		padding: 2em 3em 1em;
-	}
-
-	nav.navbar ul {
-		padding: 0;
-		margin: 0 23%;
-	}
-
-	nav.navbar ul > li {
-		display: block;
-	}
-
-	.home {
-		margin-top: 0em;
-	}
-
-	.home-about {
-		font-size: 1.5em;
-		padding: 0;
-	}
-
-	.article-image-big {
-		height: 13.6rem;
-	}
-
-	article.project section {
-		width: 70%;
-		padding: 1.2em;
-	}
-}
-
-/*larger ones*/
-@media (min-width: 64em) {
-	article {
-		padding: 2em;
-	}
-
-	.article-image-big {
-		height: 16.6rem;
-	}
 }

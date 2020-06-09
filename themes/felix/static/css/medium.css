@@ -1,0 +1,47 @@
+@media (min-width: 48em) {
+	.navbar {
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		max-width: 16em;
+	}
+
+	.navbar-split {
+		margin: 1em auto;
+	}
+
+	.content {
+		margin-left: 25%;
+	}
+
+	.content > div {
+		padding: 2em 3em 1em;
+	}
+
+	nav.navbar ul {
+		padding: 0;
+		margin: 0 23%;
+	}
+
+	nav.navbar ul > li {
+		display: block;
+	}
+
+	.home {
+		margin-top: 0em;
+	}
+
+	.home-about {
+		font-size: 1.5em;
+		padding: 0;
+	}
+
+	.article-image-big {
+		height: 13.6rem;
+	}
+
+	article.project section {
+		width: 70%;
+		padding: 1.2em;
+	}
+}

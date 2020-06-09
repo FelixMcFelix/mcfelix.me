@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ .Site.Language.Lang }}">
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,19 +13,98 @@
 		{{ hugo.Generator }}
 
 		<!-- WebFonts -->
-		<link href="https://fonts.googleapis.com/css?family=Alegreya:400,400i,700,700i" rel="stylesheet">
+		<!-- Thanks to https://csswizardry.com/2020/05/the-fastest-google-fonts/ -->
+		<!--
+			- 1. Preemptively warm up the fonts’ origin.
+			-
+			- 2. Initiate a high-priority, asynchronous fetch for the CSS file. Works in
+			-    most modern browsers.
+			-
+			- 3. Initiate a low-priority, asynchronous fetch that gets applied to the page
+			-    only after it’s arrived. Works in all browsers with JavaScript enabled.
+			-
+			- 4. In the unlikely event that a visitor has intentionally disabled
+			-    JavaScript, fall back to the original method. The good news is that,
+			-    although this is a render-blocking request, it can still make use of the
+			-    preconnect which makes it marginally faster than the default.
+			-->
+
+		<!-- [1] -->
+		<link rel="preconnect"
+			href="https://fonts.gstatic.com"
+			crossorigin />
+		<link rel="preconnect"
+			href="https://use.fontawesome.com"
+			crossorigin />
+
+		<!-- [2] -->
+		<link rel="preload"
+			as="style"
+			href="https://fonts.googleapis.com/css?family=Alegreya:400,400i,700,700i&display=swap" />
+
+		<!-- [3] -->
+		<link rel="stylesheet"
+			href="https://fonts.googleapis.com/css?family=Alegreya:400,400i,700,700i&display=swap"
+			media="print" onload="this.media='all'" />
+
+		<!-- [4] -->
+		<noscript>
+			<link rel="stylesheet"
+				href="https://fonts.googleapis.com/css?family=Alegreya:400,400i,700,700i&display=swap" />
+		</noscript>
 
 		<!-- FontAwesome -->
-		<!-- <script src="https://use.fontawesome.com/54984e38b5.js"></script> -->
 		<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
 
 		<!-- Pure.css -->
-		<link rel="stylesheet" href="https://unpkg.com/purecss@0.6.1/build/base-min.css" crossorigin="anonymous">
-		<link rel="stylesheet" href="https://unpkg.com/purecss@0.6.1/build/grids-min.css" crossorigin="anonymous">
-		<link rel="stylesheet" href="https://unpkg.com/purecss@0.6.1/build/grids-responsive-min.css" crossorigin="anonymous">
+		<link rel="stylesheet" href="{{ .Site.BaseURL }}css/base-min.css" crossorigin="anonymous">
+		<link rel="stylesheet" href="{{ .Site.BaseURL }}css/grids-min.css" crossorigin="anonymous">
+		<link rel="stylesheet" href="{{ .Site.BaseURL }}css/grids-responsive-min.css" crossorigin="anonymous">
+
+		<style type="text/css">
+			html {
+				line-height: 1.35;
+			}
+
+			html, button, input, select, textarea, .pure-g [class *= "pure-u"] {
+				font-family: "Alegreya", "Lora", Georgia, Times, "Times New Roman", serif;
+			}
+
+			@font-face {
+				font-family: "Georgia";
+				font-display: fallback;
+				src: local(Georgia);
+			}
+		</style>
+
+		<!-- <style type="text/css" id="georgia-scaling">
+			html, button, input, select, textarea, .pure-g [class *= "pure-u"] {
+				line-height: 1.6;
+				letter-spacing: -1px;
+				word-spacing: 2px;
+				visibility: visible;
+				height: auto;
+			}
+		</style> -->
+
+		<!-- <script type="text/javascript">
+			document.fonts.onloadingdone = a => console.log(a)
+			document.fonts.ready.then(
+				ok => {
+					document.getElementById('georgia-scaling').remove()
+				},
+				err => {
+					console.log("Font loading")
+				}
+			)
+		</script> -->
 
 		<!-- Local Styles -->
+
 		<link rel="stylesheet" href="{{ .Site.BaseURL }}css/styles.css">
+		<link rel="stylesheet" href="{{ .Site.BaseURL }}css/small.css" media="(min-width: 23em)">
+		<link rel="stylesheet" href="{{ .Site.BaseURL }}css/medium.css" media="(min-width: 48em)">
+		<link rel="stylesheet" href="{{ .Site.BaseURL }}css/large.css" media="(min-width: 64em)">
 		<link rel="stylesheet" href="{{ .Site.BaseURL }}css/custom.css">
 
 		{{ if eq .RelPermalink "/" }}
@@ -39,13 +118,13 @@
 		{{ end }}
 
 		<meta property="og:url" content="{{ .Permalink }}">
-		{{ with .Description }}<meta name="description" content="{{ . }}">{{ end }}
+		{{ with .Site.Params.Description }}<meta name="description" content="{{ . }}">{{ end }}
 		{{ with .Resources.GetMatch "header" }}
-			<meta property="og:image" content="{{ $.Site.BaseURL }}{{ .RelPermalink }}">
+				<meta property="og:image" content="{{ $.Site.BaseURL }}{{ .RelPermalink }}">
 		{{ end }}
 		<meta name="author" content="{{ .Site.Params.author }}" />
 
 		{{ with .OutputFormats.Get "RSS" }}
-			<link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Title }}" />
-			<link href="{{ .RelPermalink }}" rel="feed" type="application/rss+xml" title="{{ $.Title }}" />
+				<link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Title }}" />
+				<link href="{{ .RelPermalink }}" rel="feed" type="application/rss+xml" title="{{ $.Title }}" />
 		{{ end }}

@@ -1,0 +1,9 @@
+/*
+* iPhone 6 starting res
+* Only want padding in this band of device widths, screw the iPhone 5/SE/Whatever.
+*/
+@media (min-width: 23em) {
+	.home-about {
+		padding: 0 1em;
+	}
+}

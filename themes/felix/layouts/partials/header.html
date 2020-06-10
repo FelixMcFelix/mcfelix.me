@@ -120,11 +120,11 @@
 		<meta property="og:url" content="{{ .Permalink }}">
 		{{ with .Site.Params.Description }}<meta name="description" content="{{ . }}">{{ end }}
 		{{ with .Resources.GetMatch "header" }}
-				<meta property="og:image" content="{{ $.Site.BaseURL }}{{ .RelPermalink }}">
+		{{ $newImg := .Resize "200x png q100" }}
+		<meta property="og:image" content="{{ $.Site.BaseURL }}{{ $newImg.RelPermalink }}">
 		{{ end }}
 		<meta name="author" content="{{ .Site.Params.author }}" />
 
-		{{ with .OutputFormats.Get "RSS" }}
-				<link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Title }}" />
-				<link href="{{ .RelPermalink }}" rel="feed" type="application/rss+xml" title="{{ $.Title }}" />
-		{{ end }}
+		{{ range .AlternativeOutputFormats -}}
+			{{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+		{{ end -}}

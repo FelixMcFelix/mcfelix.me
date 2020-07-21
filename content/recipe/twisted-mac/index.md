@@ -3,7 +3,7 @@ title = "Twisted Mac and Cheese"
 date = 2020-07-17T12:16:11+01:00
 description = "Semi-inspired by the Hard Rock Café's dish of the same name."
 tags = ["Pasta", "Cheese", "Chicken"]
-categories = ["Italian", "Food"]
+categories = ["Italian", "Food", "Cooking"]
 
 [[ resources ]]
   name = "header"

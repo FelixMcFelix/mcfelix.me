@@ -18,6 +18,7 @@ categories = ["Italian", "Food"]
 * 1 chicken breast (\~250g),
 * \~250ml milk,
 * \~25g unsalted butter,
+* \~2 tbsp. plain flour,
 * 300g pasta,
 * Ample cheese, grated (mainly base cheese like Cheddar, with some flavour cheeses like Parmigiano-Reggiano and Pecorino),
 * 1 bell pepper (of your choosing),
@@ -44,7 +45,7 @@ categories = ["Italian", "Food"]
 
 ## Sauce
 * Heat milk in saucepan (not to boiling or burning).
-* Roux -- melt butter in separate saucepan, add flour and and stir continuously.
+* Roux -- melt butter in separate saucepan, add flour and and stir continuously for a few minutes.
 * When roux sufficiently done, add and mix in milk by small doses. Stir over medium-high heat until thickened.
 * Add some reserved pasta water, add cheese. Stir. This should greatly thicken the sauce. If in doubt, grate more.
 

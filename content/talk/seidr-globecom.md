@@ -8,7 +8,7 @@ slidesUrl = "/docs/talks/globecom-seidr.pdf"
 
 # Links (optional)
 urls = [
-	["Video Recording", "<< FILL ME IN >>"]
+	["Video Recording", "https://www.youtube.com/watch?v=a20kHkYHEvE"]
 ]
 
 +++

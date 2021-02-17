@@ -23,7 +23,7 @@ pub_type = "1"
 # Publication name and optional abbreviated version.
 publication = "2020 IEEE Global Communications Conference: Next-Generation Networking and Internet (Globecom2020 NGNI), Taipei, Taiwan, December 7–11, 2020"
 publication_short = "IEEE GLOBECOM 2020"
-to_appear = true
+to_appear = false
 
 # Abstract and optional shortened version.
 abstract = ""
@@ -43,7 +43,8 @@ selected = false
 
 # Links (optional)
 urls = [
-	["Author-final PDF", "/docs/papers/globecom-2020-seidr-paper.pdf"]
+	["Author-final PDF", "/docs/papers/globecom-2020-seidr-paper.pdf"],
+	["DOI", "https://doi.org/10.1109/GLOBECOM42002.2020.9348063"]
 ]
 
 # Optional featured image (relative to `static/img/` folder).

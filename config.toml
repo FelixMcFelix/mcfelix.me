@@ -22,7 +22,7 @@ pygmentsCodeFences = true
 [social]
   github        = "FelixMcFelix"
   email         = "kyleandrew.simpson@gmail.com"
-  twitter       = "Mach60KAS"
+  twitter       = "McFelixFelix"
   linkedIn      = "kyle-simpson-b0944bb0"
   stackoverflow = ""
   bandcamp      = ""
@@ -48,7 +48,7 @@ pygmentsCodeFences = true
   name = "résumé"
   identifier = "resume"
   weight = 300
-  url = "Vitae-KSimpson.pdf"
+  url = "kyle-simpson.pdf"
   pre = "yup"
 
 [markup]

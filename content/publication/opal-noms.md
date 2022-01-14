@@ -43,7 +43,8 @@ selected = false
 
 # Links (optional)
 urls = [
-	["Author-final PDF", "/docs/papers/noms-2022-opal.pdf"]
+	["Author-final PDF", "/docs/papers/noms-2022-opal.pdf"],
+	["Source code", "https://github.com/FelixMcFelix/pdp-rl-paper"]
 ]
 
 # Optional featured image (relative to `static/img/` folder).

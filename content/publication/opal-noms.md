@@ -3,7 +3,7 @@
 # Courtesy of https://github.com/gcushen/hugo-academic/
 
 title = "Revisiting the Classics: Online RL in the Programmable Dataplane"
-date = 2021-04-26T10:00:00Z
+date = 2022-04-26T10:00:00Z
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
 authors = ["Kyle A. Simpson", "Dimitrios P. Pezaros"]

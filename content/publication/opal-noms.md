@@ -3,7 +3,7 @@
 # Courtesy of https://github.com/gcushen/hugo-academic/
 
 title = "Revisiting the Classics: Online RL in the Programmable Dataplane"
-date = 2021-12-22T10:00:00Z
+date = 2021-04-26T10:00:00Z
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
 authors = ["Kyle A. Simpson", "Dimitrios P. Pezaros"]
@@ -23,7 +23,7 @@ pub_type = "1"
 # Publication name and optional abbreviated version.
 publication = "NOMS 2022 - IEEE/IFIP Network Operations and Management Symposium, Budapest, Hungary, April 25–29"
 publication_short = "IEEE/IFIP NOMS 2022"
-to_appear = true
+to_appear = false
 
 # Abstract and optional shortened version.
 abstract = ""

@@ -44,7 +44,7 @@ selected = false
 # Links (optional)
 urls = [
 	["Author-final PDF", "/docs/dissertation.pdf"],
-	["Document source TeX", "https://github.com/FelixMcFelix/thesis"]
+	["TeX source", "https://github.com/FelixMcFelix/thesis"]
 ]
 
 # Optional featured image (relative to `static/img/` folder).

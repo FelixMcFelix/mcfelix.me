@@ -43,7 +43,7 @@ selected = false
 
 # Links (optional)
 urls = [
-	["Author-final PDF", "/docs/dissertation.pdf"],
+	["PDF", "/docs/dissertation.pdf"],
 	["TeX source", "https://github.com/FelixMcFelix/thesis"]
 ]
 

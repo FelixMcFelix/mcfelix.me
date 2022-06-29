@@ -39,13 +39,18 @@ highlight = true
 image_preview = ""
 
 # Is this a selected publication? (true/false)
-selected = false
+selected = true
 
 # Links (optional)
 urls = [
 	["Author-final PDF", "/docs/papers/noms-2022-opal.pdf"],
 	["DOI", "https://doi.org/10.1109/NOMS54207.2022.9789930"],
 	["Source code", "https://github.com/FelixMcFelix/pdp-rl-paper"]
+]
+
+# Awards (super optional)
+awards = [
+	["SICSA PhD Conference Best Paper"],
 ]
 
 # Optional featured image (relative to `static/img/` folder).

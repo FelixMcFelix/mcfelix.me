@@ -21,6 +21,9 @@
 	{{ with .Params.publication }}
 		<br />{{ . | markdownify }}{{ if $pub.Params.to_appear }}, to appear.{{ else }}.{{end}}
 	{{ end }}
+	{{ if .Params.awards }}
+	<br /><p class="awards"><i class="far fa-star"></i> {{ range .Params.awards }}{{ delimit . ", " | markdownify }}{{ end }}.</p>
+	{{ end }}
 	{{ partial "paper-buttons" . }}
 	</li>
 {{ end }}

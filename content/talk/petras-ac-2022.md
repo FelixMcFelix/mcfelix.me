@@ -8,6 +8,7 @@ slidesUrl = "/docs/talks/petras-ac-22.pdf"
 
 # Links (optional)
 urls = [
+	["Video Recording", "https://youtu.be/zmukp5-3bwQ"]
 ]
 
 +++

@@ -48,6 +48,12 @@ pygmentsCodeFences = true
   name = "résumé"
   identifier = "resume"
   weight = 300
+  url = "kyle-simpson-us-resume.pdf"
+  pre = "yup"
+[[menu.main]]
+  name = "cv"
+  identifier = "cv"
+  weight = 400
   url = "kyle-simpson.pdf"
   pre = "yup"
 

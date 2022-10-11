@@ -21,8 +21,8 @@ authors = ["Kyle A. Simpson"]
 pub_type = "5"
 
 # Publication name and optional abbreviated version.
-publication = "PhD Thesis (pre-Viva)"
-publication_short = "PhD Thesis (pre-Viva)"
+publication = "PhD Thesis"
+publication_short = "PhD Thesis"
 to_appear = false
 
 # Abstract and optional shortened version.

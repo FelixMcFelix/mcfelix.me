@@ -9,8 +9,8 @@ avatardesc = "Photograph of Kyle Simpson at Loch an Eilein, Aviemore."
 
 +++
 
-I'm **Kyle Simpson** [Orcid Link](https://orcid.org/0000-0001-8068-9909), a Postdoctoral Research Assistant in Computing Science at the University of Glasgow.
-I work in the [Glasgow Systems Section](https://www.gla.ac.uk/schools/computing/research/researchsections/systems-section/) on the intersection of programmable dataplane hardware and data-driven networking.
+I'm **Kyle Simpson** [Orcid Link](https://orcid.org/0000-0001-8068-9909), an Extensibility Engineer at Arista Networks.
+I completed my PhD in the University of Glasgow's [Netlab](https://twitter.com/netlab_uofg)/[Systems Section](https://www.gla.ac.uk/schools/computing/research/researchsections/systems-section/) on the intersection of programmable dataplane hardware and data-driven networking.
 Unabashed rustacean, Emotion Engine advocate, and lover of weird hardware!
 
 I take interest in research of *network programmability*, *reinforcement learning*, *computer graphics* and *combinatorial search*, and enjoy hobbyist *game development* and [*cooking*](/recipe).

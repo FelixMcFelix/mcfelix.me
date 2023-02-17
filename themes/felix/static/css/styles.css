@@ -108,7 +108,7 @@ body {
 }
 
 article p {
-	text-indent: 1em;
+/*	text-indent: 1em;*/
 }
 
 p:first-of-type,
@@ -397,6 +397,25 @@ a.rss {
 
 	font-weight: bold;
 	font-style: italic;
+}
+
+figure img {
+	width: 100%;
+/*	height: 7.6rem;*/
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
+figcaption {
+	text-align: center;
+	margin-top: 0;
+}
+
+figcaption h4 {
+	font-weight: normal;
+	font-style: italic;
+	margin-top: 0.25em;
 }
 
 /* Dirty hack for ORCiD */

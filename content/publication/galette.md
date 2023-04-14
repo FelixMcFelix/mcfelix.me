@@ -21,7 +21,7 @@ authors = ["Kyle A. Simpson", "Chris Williamson", "Douglas J. Paul", "Dimitrios 
 pub_type = "1"
 
 # Publication name and optional abbreviated version.
-publication = "IFIP Networking Conference, IFIP Networking 2023, Barcelona, Spain, June 12-15, 2024"
+publication = "IFIP Networking Conference, IFIP Networking 2023, Barcelona, Spain, June 12-15, 2023"
 publication_short = "IFIP NETWORKING 2023"
 to_appear = true
 

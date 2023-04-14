@@ -43,8 +43,9 @@ selected = false
 
 # Links (optional)
 urls = [
-#	["Author-final PDF", "/docs/papers/globecom-2020-seidr-paper.pdf"],
-#	["DOI", "https://doi.org/10.1109/GLOBECOM42002.2020.9348063"]
+	["Author-final PDF", "/docs/papers/ifip-2023-galette.pdf"],
+#	["DOI", "https://doi.org/10.1109/GLOBECOM42002.2020.9348063"],
+	["Source code", "https://github.com/FelixMcFelix/galette"]
 ]
 
 # Optional featured image (relative to `static/img/` folder).

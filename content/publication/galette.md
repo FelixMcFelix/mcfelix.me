@@ -3,7 +3,7 @@
 # Courtesy of https://github.com/gcushen/hugo-academic/
 
 title = "Galette: A Lightweight XDP Dataplane on Your Raspberry Pi"
-date = 2023-04-14T16:00:00+01:00
+date = 2023-06-13T16:00:00+01:00
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
 authors = ["Kyle A. Simpson", "Chris Williamson", "Douglas J. Paul", "Dimitrios P. Pezaros"]
@@ -23,7 +23,7 @@ pub_type = "1"
 # Publication name and optional abbreviated version.
 publication = "IFIP Networking Conference, IFIP Networking 2023, Barcelona, Spain, June 12-15, 2023"
 publication_short = "IFIP NETWORKING 2023"
-to_appear = true
+to_appear = false
 
 # Abstract and optional shortened version.
 abstract = ""

@@ -9,7 +9,7 @@ avatardesc = "Photograph of Kyle Simpson at Loch an Eilein, Aviemore."
 
 +++
 
-I'm **Kyle Simpson** [Orcid Link](https://orcid.org/0000-0001-8068-9909), an Extensibility Engineer at Arista Networks.
+I'm **Kyle Simpson** [Orcid Link](https://orcid.org/0000-0001-8068-9909), a Software Engineer at the [Oxide Computer Company](https://oxide.computer).
 I completed my PhD in the University of Glasgow's [Netlab](https://twitter.com/netlab_uofg)/[Systems Section](https://www.gla.ac.uk/schools/computing/research/researchsections/systems-section/) on the intersection of programmable dataplane hardware and data-driven networking.
 Unabashed rustacean, Emotion Engine advocate, and lover of weird hardware!
 

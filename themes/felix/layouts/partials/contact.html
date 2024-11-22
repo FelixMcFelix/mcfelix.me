@@ -1,29 +1,37 @@
 <section class="social">
-	{{ with .Site.Social.bandcamp }}
+	{{ with .Site.Params.Social.bandcamp }}
 	<a href="https://{{ . }}.bandcamp.com/" alt="Bandcamp" title="Bandcamp"><i class="fab fa-bandcamp"></i></a>
 	{{ end }}
 
-	{{ with .Site.Social.github }}
+	{{ with .Site.Params.Social.github }}
 	<a href="http://github.com/{{ . }}" alt="GitHub" title="GitHub"><i class="fab fa-github"></i></a>
 	{{ end }}
 
-	{{ with .Site.Social.email }}
+	{{ with .Site.Params.Social.email }}
 	<a href="mailto:{{ . }}" alt="Email" title="Email"><i class="fas fa-envelope"></i></a>
 	{{ end }}
 
-	{{ with .Site.Social.twitter }}
+	{{ with .Site.Params.Social.mastodon }}
+	<a href="{{ . }}" alt="Mastodon" title="Mastodon"><i class="fab fa-mastodon"></i></a>
+	{{ end }}
+
+	{{ with .Site.Params.Social.bsky }}
+	<a href="https://bsky.app/profile/{{ . }}" alt="Bluesky" title="Bluesky"><i class="fab fa-bluesky"></i></a>
+	{{ end }}
+
+	{{ with .Site.Params.Social.twitter }}
 	<a href="http://twitter.com/{{ . }}" alt="Twitter" title="Twitter"><i class="fab fa-twitter"></i></a>
 	{{ end }}
 
-	{{ with .Site.Social.linkedin }}
+	{{ with .Site.Params.Social.linkedin }}
 	<a href="http://linkedin.com/in/{{ . }}" alt="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
 	{{ end }}
 
-	{{ with .Site.Social.stackoverflow }}
+	{{ with .Site.Params.Social.stackoverflow }}
 	<a href="http://stackoverflow.com/{{ . }}" alt="Stack Overflow" title="Stack Overflow"><i class="fab fa-stack-overflow"></i></a>
 	{{ end }}
 
-	{{ with .Site.Social.keybase }}
+	{{ with .Site.Params.Social.keybase }}
 	<a href="https://keybase.io/{{ . }}" alt="Keybase" title="Keybase"><i class="fas fa-key"></i></a>
 	{{ end }}
 </section>

@@ -19,14 +19,16 @@ pygmentsCodeFences = true
   custom_js  = []
   hideReadingTime = false
 
-[social]
+[params.social]
   github        = "FelixMcFelix"
   email         = "kyleandrew.simpson@gmail.com"
   twitter       = "McFelixFelix"
+  mastodon      = "https://hachyderm.io/@FelixMcFelix"
+  bsky          = "felixmcfelix.bsky.social"
   linkedIn      = "kyle-simpson-b0944bb0"
   stackoverflow = ""
   bandcamp      = ""
-  keybase       = "felixmcfelix"
+  keybase       = ""
 
 ## Main Menu
 [[menu.main]]

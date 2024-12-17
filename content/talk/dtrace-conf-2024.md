@@ -8,6 +8,7 @@ venuelink = "https://oxide.computer/blog/dtrace-conf24"
 
 # Links (optional)
 urls = [
+	["Video Recording", "https://youtu.be/5ki7xQYRBEg"]
 ]
 
 +++

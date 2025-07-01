@@ -2,9 +2,9 @@
 {{ $page := .page }}
 
 
-<h2>Recent Publications and Conference Papers</h2>
+<h2>Selected Publications</h2>
 <ul>
-{{ range first 5 ( where $.Site.RegularPages "Type" "publication" ) }}
+{{ range first 5 ( where ( where $.Site.RegularPages "Type" "publication" ) ".Params.selected" true ) }}
 	<li>
 	{{ $pub := . }}
 	<strong>{{ .Title }}</strong>:

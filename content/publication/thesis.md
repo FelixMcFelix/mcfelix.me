@@ -39,7 +39,7 @@ highlight = true
 image_preview = ""
 
 # Is this a selected publication? (true/false)
-selected = false
+selected = true
 
 # Links (optional)
 urls = [
